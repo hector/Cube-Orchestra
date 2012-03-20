@@ -20,8 +20,9 @@ public class CubeOrchestraScene extends AbstractScene {
 	static int listeningPort = 9000;
 	static int broadcastPort = 12000;
 	int startFrameMillis, instrumentSize;
-	float tempo, alpha, instrumentScale;
+	float tempo, instrumentScale;
 	Gradient grad;
+	ClientSelection clientSelection;
 	NetAddress pureData;
 	OscP5 oscP5 = null;
 	ArrayList<Instrument> instruments;
@@ -29,7 +30,6 @@ public class CubeOrchestraScene extends AbstractScene {
 	ArrayList<DrumMachine> drumMachines;
 	HashMap<String, Instrument> devices;
 	List<String> clients;
-	int[] colors;
 	MTCanvas canvas;
 
 	public CubeOrchestraScene(MTApplication app, String name) {
@@ -47,10 +47,9 @@ public class CubeOrchestraScene extends AbstractScene {
 		synthesizers = new ArrayList<Synthesizer>(4);
 		drumMachines = new ArrayList<DrumMachine>(4);
 		grad = new Gradient();
+		clientSelection = new ClientSelection(clients, devices);
 		// Set variables values
 		tempo = 120;
-		initColors();
-		alpha = 75;
 		instrumentSize = app.height / 3;
 		instrumentScale = 1;
 		canvas = this.getCanvas();
@@ -63,6 +62,7 @@ public class CubeOrchestraScene extends AbstractScene {
 
 		// Add components to canvas
 		canvas.addChild(grad);
+		canvas.addChild(clientSelection);
 		try {
 			createSynthesizer("qweqwe");
 		} catch (Exception e) {
@@ -79,41 +79,6 @@ public class CubeOrchestraScene extends AbstractScene {
 	@Override
 	public void shutDown() {
 	}
-
-	private void initColors() {
-		colors = new int[4];
-		colors[0] = app.color(100, 100, 255); // blue
-		colors[1] = app.color(100, 255, 100); // green
-		colors[2] = app.color(255, 100, 100); // red
-		colors[3] = app.color(255, 255, 0); // yellow
-	}
-
-	// @Override
-	// public void draw() {
-	// try {
-	// startFrameMillis = millis();
-	// background(50);
-	// grad.draw();
-	// lights();
-	// // Draw instruments
-	// strokeWeight(3);
-	// for (Instrument instrument : instruments) {
-	// instrument.draw();
-	// }
-	// // Draw client coloured circles
-	// Instrument inst;
-	// float size;
-	// stroke(255, alpha);
-	// for (int i = 0; i < clients.size(); i++) {
-	// inst = devices.get(clients.get(i));
-	// fill(colors[i], alpha);
-	// size = inst.getSize() * inst.getScale() * 2;
-	// ellipse(inst.getPosition().x, inst.getPosition().y, size, size);
-	// }
-	// time = millis();
-	// } catch (ConcurrentModificationException cme) {
-	// }
-	// }
 
 	public void oscEvent(OscMessage msg) throws Exception {
 		try {

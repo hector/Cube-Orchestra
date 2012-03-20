@@ -28,6 +28,7 @@ public abstract class Instrument extends Drawable {
     color = p5.color(230,100,30);
     track = true;
     accelerometer = false;
+    p5.strokeWeight(3);
     this.size = size != null ? size.intValue() : p5.height/4;
     createCube(); 
   }
