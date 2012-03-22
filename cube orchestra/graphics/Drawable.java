@@ -13,7 +13,7 @@ public abstract class Drawable extends MTComponent {
 	static float TWO_PI = PConstants.TWO_PI;
 	int color, strokeColor;
 	PVector position; // center of the drawable
-	float alpha, angle, angleY, bpm, scale, tempScale;
+	protected float alpha, angle, angleY, bpm, scale, tempScale;
 	boolean sequencer, visible;
 	protected MTApplication p5;
 
@@ -107,9 +107,9 @@ public abstract class Drawable extends MTComponent {
 
 	protected void rotate() {
 		if (bpm != 0 && sequencer) {
-			// angle += (p5.spentTime() * bpm * PI ) / 60000 ; // 180 degrees
-			// per beat
-			angle += 0.1;
+//			 angle += (CubeOrchestraScene.scene.spentTime() * bpm * PI ) / 60000 ; // 180 degrees
+//			 per beat
+			angle += 0.07f * (bpm / 120f);
 			if (angle > TWO_PI)
 				angle = 0;
 		}

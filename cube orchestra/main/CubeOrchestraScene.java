@@ -4,6 +4,8 @@ import oscP5.*;
 import netP5.*;
 import processing.core.*;
 import instruments.*;
+import effects.EffectsBar;
+import effects.TempoBar;
 import graphics.*;
 
 import java.util.*;
@@ -19,10 +21,12 @@ public class CubeOrchestraScene extends AbstractScene {
 	public static CubeOrchestraScene scene;
 	static int listeningPort = 9000;
 	static int broadcastPort = 12000;
-	int startFrameMillis, instrumentSize;
+	int instrumentSize;
 	float tempo, instrumentScale;
 	Gradient grad;
-	ClientSelection clientSelection;
+	InstrumentSelection instrumentSelection;
+	EffectsBar effectsBar;
+	TempoBar tempoBar;
 	NetAddress pureData;
 	OscP5 oscP5 = null;
 	ArrayList<Instrument> instruments;
@@ -47,9 +51,11 @@ public class CubeOrchestraScene extends AbstractScene {
 		synthesizers = new ArrayList<Synthesizer>(4);
 		drumMachines = new ArrayList<DrumMachine>(4);
 		grad = new Gradient();
-		clientSelection = new ClientSelection(clients, devices);
+		instrumentSelection = new InstrumentSelection(clients, devices);
+		effectsBar = new EffectsBar();
 		// Set variables values
 		tempo = 120;
+		tempoBar = new TempoBar(tempo);
 		instrumentSize = app.height / 3;
 		instrumentScale = 1;
 		canvas = this.getCanvas();
@@ -62,15 +68,18 @@ public class CubeOrchestraScene extends AbstractScene {
 
 		// Add components to canvas
 		canvas.addChild(grad);
-		canvas.addChild(clientSelection);
+		canvas.addChild(effectsBar);
+		canvas.addChild(instrumentSelection);
+		canvas.addChild(tempoBar);
 		try {
 			createSynthesizer("qweqwe");
+			synthesizers.get(0).sequencer(true);
 		} catch (Exception e) {
 		}
 
 		// Show touches
 		this.registerGlobalInputProcessor(new CursorTracer(app, this));
-	}
+	}	
 
 	@Override
 	public void init() {
@@ -138,8 +147,8 @@ public class CubeOrchestraScene extends AbstractScene {
 		addClient(ip);
 		instruments.add(instrument);
 		scaleInstruments();
-		sendLayout(instrument, ip);
 		canvas.addChild(instrument);
+		sendLayout(instrument, ip);
 	}
 
 	private PVector emptyPosition() {
@@ -203,9 +212,13 @@ public class CubeOrchestraScene extends AbstractScene {
 
 	private String ip2Pattern(String ip) {
 		Instrument instr = devices.get(ip);
-		int num = drumMachines.indexOf(instr) + 1;
+		return instrument2Pattern(instr);
+	}
+
+	private String instrument2Pattern(Instrument instrument) {
+		int num = drumMachines.indexOf(instrument) + 1;
 		if (num == 0)
-			num = synthesizers.indexOf(instr) + 5;
+			num = synthesizers.indexOf(instrument) + 5;
 		return "/" + num;
 	}
 
@@ -217,24 +230,34 @@ public class CubeOrchestraScene extends AbstractScene {
 		else
 			return drumMachines.get(instrNum - 1);
 	}
-
-	public void globalTempo(float tempo, DrumMachine drums) {
-		float bpm = tempo * 240; // Tempo from touchOSC slider to BPM
+	
+	public void globalTempo(float bpm) {
 		this.tempo = bpm; // Save to global tempo
+		tempoBar.setBPM(bpm); // Update tempoBar
+		// Send new tempo to PD
+		OscMessage msg = new OscMessage("/tempo");
+		msg.add(bpm);
+		oscSendPD(msg);
+		// Set tempo for all instruments (important for rotation spedd)
 		for (Instrument instr : instruments) {
 			instr.setBPM(bpm); // Set bpm to all instruments
-			if (instr.getClass().equals(drums.getClass()) && instr != drums) {
-				instr.getLayout().getControl("/1/fader1").setValues(tempo); // Set
-																			// tempo
-																			// to
-																			// drumMachine
-																			// layouts
+		}		
+	}
+
+	// Not used
+	public void globalTempo(float tempo, DrumMachine drums) {
+		float bpm = tempo * 240; // Tempo from touchOSC slider to BPM
+		globalTempo(bpm);
+		for (Instrument instr : instruments) {
+			instr.setBPM(bpm); // Set bpm to all instruments
+			if (instr.getClass().equals(DrumMachine.class) && instr != drums) {
+				instr.getLayout().getControl("/1/fader1").setValues(tempo); 
 			}
 		}
 		OscMessage msg;
 		for (String ip : clients) {
 			Instrument instr = devices.get(ip);
-			if (instr.getClass().equals(drums.getClass()) && instr != drums) {
+			if (instr.getClass().equals(DrumMachine.class) && instr != drums) {
 				msg = instr.getLayout().getControl("/1/fader1").oscMessage();
 				oscSend(msg, ip); // Send new tempo to clients with drumMachines
 			}
@@ -259,6 +282,11 @@ public class CubeOrchestraScene extends AbstractScene {
 		oscP5.send(msg, pureData);
 	}
 
+	public void oscSendInstrumentPD(Instrument instrument, OscMessage msg) {
+		msg.setAddrPattern(instrument2Pattern(instrument) + msg.addrPattern());
+		oscSendPD(msg);
+	}
+
 	public void oscSend(ArrayList<OscMessage> msgs, String ip) {
 		NetAddress dest = new NetAddress(ip, broadcastPort);
 		// OscBundle bundle = new OscBundle();
@@ -271,6 +299,10 @@ public class CubeOrchestraScene extends AbstractScene {
 		}
 		// bundle.add(msg);
 		// oscP5.send(bundle, dest);
+	}
+
+	public ArrayList<Instrument> getInstruments() {
+		return instruments;
 	}
 
 }
