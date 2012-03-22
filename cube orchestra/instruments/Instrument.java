@@ -85,6 +85,7 @@ public abstract class Instrument extends Drawable {
 		cube = new MagicCube(size);
 		cube.setColor(color);
 		cube.setPosition(getPosition());
+		addChild(cube);
 	}
 
 	@Override
@@ -186,7 +187,8 @@ public abstract class Instrument extends Drawable {
 
 	@Override
 	public void draw() {
-		cube.draw();
+		// not needed since adding cube as a child
+//		cube.draw();
 	}
 
 	public int getSize() {

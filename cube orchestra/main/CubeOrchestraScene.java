@@ -55,7 +55,7 @@ public class CubeOrchestraScene extends AbstractScene {
 		effectsBar = new EffectsBar();
 		// Set variables values
 		tempo = 120;
-		tempoBar = new TempoBar(tempo);
+		tempoBar = new TempoBar(app, tempo);
 		instrumentSize = app.height / 3;
 		instrumentScale = 1;
 		canvas = this.getCanvas();

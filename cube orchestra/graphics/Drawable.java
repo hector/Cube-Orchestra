@@ -4,6 +4,7 @@ import main.CubeOrchestraScene;
 
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTComponent;
+import org.mt4j.util.math.Vector3D;
 
 import processing.core.*;
 
@@ -179,4 +180,28 @@ public abstract class Drawable extends MTComponent {
 		return PApplet.radians((float) degrees);
 	}
 
+	// Callback of the drag action
+	@Override
+	public void translateGlobal(Vector3D directionVect) {
+		super.translateGlobal(directionVect);
+		PVector newPosition = vector3D2PVector(directionVect);
+		newPosition.add(getPosition());
+		setPosition(newPosition);
+	}
+	
+	public static Vector3D[] pVector2Vector3D(PVector[] pVectors) {
+		Vector3D[] vectors3D = new Vector3D[pVectors.length];
+		for(int i = 0; i < pVectors.length; i++) {
+			vectors3D[i] = pVector2Vector3D(pVectors[i]);
+		}
+		return vectors3D;
+	}	
+	
+	public static Vector3D pVector2Vector3D(PVector pVector) {
+		return new Vector3D(pVector.x, pVector.y, pVector.z);
+	}
+	
+	public static PVector vector3D2PVector(Vector3D vector3D) {
+		return new PVector(vector3D.x, vector3D.y, vector3D.z);
+	}	
 }

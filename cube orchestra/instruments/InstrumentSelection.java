@@ -17,6 +17,7 @@ public class InstrumentSelection extends Drawable {
 		this.clients = clients;
 		initColors();
 		alpha = 75;
+		setPickable(false);
 	}
 
 	// @Override

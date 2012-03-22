@@ -16,6 +16,7 @@ public class EffectsBar extends Drawable {
 	public EffectsBar() {
 		super();
 		initColors();
+		setPickable(false);
 		effects = new ArrayList<Effect>();
 		// Bar
 		float width = p5.width / 4;

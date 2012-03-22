@@ -20,6 +20,8 @@ public class Gradient extends Drawable {
   public Gradient() {
     // Create buffered image for plasma effect
     bgImage = p5.createImage(160, 90, PConstants.RGB);
+    setPickable(false);
+    unregisterAllInputProcessors();
   }
   
   public void draw() {

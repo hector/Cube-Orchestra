@@ -8,6 +8,7 @@ import graphics.Drawable;
 
 import main.CubeOrchestraScene;
 
+import org.mt4j.components.MTComponent;
 import org.mt4j.components.visibleComponents.font.FontManager;
 import org.mt4j.components.visibleComponents.shapes.MTRectangle.PositionAnchor;
 import org.mt4j.components.visibleComponents.widgets.MTSlider;
@@ -15,13 +16,16 @@ import org.mt4j.components.visibleComponents.widgets.MTTextArea;
 import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 
-public class TempoBar extends Drawable {
+import processing.core.PApplet;
+
+public class TempoBar extends MTComponent {
 
 	MTSlider slider;
 	MTTextArea textField;
+	float bpm;
 
-	public TempoBar(float bpm) {
-		super();
+	public TempoBar(PApplet p5, float bpm) {
+		super(p5);
 		this.bpm = bpm;
 		// Slider
 		float width = p5.width / 4f;
@@ -56,9 +60,8 @@ public class TempoBar extends Drawable {
 		textField.setPositionGlobal(new Vector3D(width, -5, 0));
 	}
 
-	@Override
 	public void setBPM(float bpm) {
-		super.setBPM(bpm);
+		this.bpm = bpm;
 		setTextBPM();
 	}
 	
