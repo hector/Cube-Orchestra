@@ -1,27 +1,96 @@
 package graphics;
 
+import instruments.Instrument;
+import main.CubeOrchestraScene;
+
 import org.mt4j.components.bounds.BoundingSphere;
+import org.mt4j.components.bounds.OrientedBoundingBox;
+import org.mt4j.input.gestureAction.DefaultDragAction;
+import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragProcessor;
 import org.mt4j.util.math.Vector3D;
 
+import OSC.Control;
+
+import effects.EffectDragAction;
+
+import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class MagicCube extends Cube {
 
+	Instrument instrument;
 	Pyramid[] pyramids;
 	int[] colors;
+	BoundingSphere sphere;
+//	OrientedBoundingBox box;
 
-	public MagicCube(float size) {
+	public MagicCube(float size, Instrument instrument) {
 		super(size);
+		this.instrument = instrument;
 		colors = new int[6];
 		createColors();
 		pyramids = new Pyramid[6];
 		createPyramids();
+		// Pickable behavior
 		setBoundingSphere();
+		unregisterAllInputProcessors();
+		removeAllGestureEventListeners();
+		registerInputProcessor(new DragProcessor(this.getRenderer()));
+		addGestureListener(DragProcessor.class, new DefaultDragAction());
 	}
+	
+	public MagicCube(float size) {
+		this(size, null);
+	}	
 
 	private void setBoundingSphere() {
-		BoundingSphere sphere = new BoundingSphere(this, pVector2Vector3D(vertices));
+		Vector3D center = pVector2Vector3D(getPosition());
+		float radius = getSize() * getScale() * (float)Math.sqrt(2) / 2f;
+		sphere = new BoundingSphere(this, center, radius);
 		setBounds(sphere);
+//		box = new OrientedBoundingBox(this, globalVertices());
+//		setBounds(box);
+	}
+	
+	// Return an approximation of global vertices (only scale and translation, not rotation)
+	private Vector3D[] globalVertices() {
+		Vector3D[] vectors = pVector2Vector3D(vertices);
+		Vector3D position = pVector2Vector3D(getPosition());
+		for(int i = 0; i < vectors.length; i++) {
+			vectors[i] = vectors[i].getScaled(getScale()).getAdded(position);
+		}
+		return vectors;
+	}
+
+//	@Override
+//	public void drawComponent(PGraphics g) {
+//		super.drawComponent(g);
+//		sphere.drawBounds(g);
+//	}	
+	
+	@Override
+	public void translateGlobal(Vector3D directionVect) {
+//		super.translateGlobal(directionVect);
+		PVector newPosition = vector3D2PVector(directionVect);
+		newPosition.add(getPosition());
+		setPosition(newPosition); // Avoid setter to avoid infinite recursion
+	}
+	
+	@Override
+	public void setPosition(PVector position) {
+		super.setPosition(position);
+		setBoundingSphere(); // recalculate for new position
+		
+		if (instrument != null) {
+			instrument.sendPosition2PD(); // send position to PD for the panning FX
+			instrument.setFXsEnabled();
+		}
+	}	
+	
+	@Override
+	public void setScale(float scale) {
+		super.setScale(scale);
+		setBoundingSphere(); // recalculate for new scale
 	}
 
 	private void createColors() {

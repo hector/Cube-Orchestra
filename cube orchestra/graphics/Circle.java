@@ -8,7 +8,7 @@ import processing.core.PApplet;
 
 public class Circle extends MTEllipse {
 
-	static float alpha = 150;
+	static float alpha = 200;
 	protected MTColor color;
 	protected float radius;
 
@@ -19,8 +19,9 @@ public class Circle extends MTEllipse {
 		this.radius = radius;
 		color.setAlpha(alpha);
 		setFillColor(color);
-		setStrokeColor(new MTColor(color.getR() + 100, color.getG() + 100,
-				color.getB() + 100, color.getAlpha()));
+		setStrokeColor(new MTColor(color.getR() + 150, color.getG() + 150,
+				color.getB() + 150, color.getAlpha()));
+		setStrokeWeight(2);
 	}
 	
 	public Circle(PApplet pApplet, Vector3D centerPoint, float radius,

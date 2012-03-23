@@ -42,6 +42,10 @@ public class Cube extends Polyedre {
     polygons[3] = new Square3D(vertices[1], vertices[0], vertices[2], vertices[3], -1,0,0); //left
     polygons[4] = new Square3D(vertices[1], vertices[5], vertices[4], vertices[0], 0,-1,0); //top
     polygons[5] = new Square3D(vertices[2], vertices[6], vertices[7], vertices[3], 0,1,0); //bottom
-  }  
+  }
+  
+  public float getSize() {
+	  return width; // all sides are equal
+  }
   
 }

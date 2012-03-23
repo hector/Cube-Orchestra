@@ -4,6 +4,7 @@ import oscP5.*;
 import netP5.*;
 import processing.core.*;
 import instruments.*;
+import effects.Effect;
 import effects.EffectsBar;
 import effects.TempoBar;
 import graphics.*;
@@ -13,6 +14,7 @@ import java.util.*;
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTCanvas;
 import org.mt4j.input.inputProcessors.globalProcessors.CursorTracer;
+import org.mt4j.input.inputSources.TuioInputSource;
 import org.mt4j.sceneManagement.AbstractScene;
 
 public class CubeOrchestraScene extends AbstractScene {
@@ -55,7 +57,7 @@ public class CubeOrchestraScene extends AbstractScene {
 		effectsBar = new EffectsBar();
 		// Set variables values
 		tempo = 120;
-		tempoBar = new TempoBar(app, tempo);
+		tempoBar = new TempoBar(tempo);
 		instrumentSize = app.height / 3;
 		instrumentScale = 1;
 		canvas = this.getCanvas();
@@ -72,13 +74,20 @@ public class CubeOrchestraScene extends AbstractScene {
 		canvas.addChild(instrumentSelection);
 		canvas.addChild(tempoBar);
 		try {
-			createSynthesizer("qweqwe");
-			synthesizers.get(0).sequencer(true);
+//			createSynthesizer("qweqwe");
+//			synthesizers.get(0).sequencer(true);
 		} catch (Exception e) {
 		}
 
 		// Show touches
-		this.registerGlobalInputProcessor(new CursorTracer(app, this));
+//		this.registerGlobalInputProcessor(new CursorTracer(app, this));
+	}	
+	
+	@Override
+	public void drawAndUpdate(PGraphics graphics, long timeDelta) { 
+		try {
+			super.drawAndUpdate(graphics, timeDelta);
+		} catch (ConcurrentModificationException e) {}
 	}	
 
 	@Override
@@ -141,7 +150,7 @@ public class CubeOrchestraScene extends AbstractScene {
 	}
 
 	private void addInstrument(String ip, Instrument instrument) {
-		instrument.setInitialPosition(emptyPosition());
+		instrument.setPosition(emptyPosition());
 		instrument.setBPM(tempo);
 		devices.put(ip, instrument);
 		addClient(ip);
@@ -238,7 +247,7 @@ public class CubeOrchestraScene extends AbstractScene {
 		OscMessage msg = new OscMessage("/tempo");
 		msg.add(bpm);
 		oscSendPD(msg);
-		// Set tempo for all instruments (important for rotation spedd)
+		// Set tempo for all instruments (important for rotation speed)
 		for (Instrument instr : instruments) {
 			instr.setBPM(bpm); // Set bpm to all instruments
 		}		
@@ -249,7 +258,7 @@ public class CubeOrchestraScene extends AbstractScene {
 		float bpm = tempo * 240; // Tempo from touchOSC slider to BPM
 		globalTempo(bpm);
 		for (Instrument instr : instruments) {
-			instr.setBPM(bpm); // Set bpm to all instruments
+//			instr.setBPM(bpm); // Set bpm to all instruments
 			if (instr.getClass().equals(DrumMachine.class) && instr != drums) {
 				instr.getLayout().getControl("/1/fader1").setValues(tempo); 
 			}
@@ -303,6 +312,10 @@ public class CubeOrchestraScene extends AbstractScene {
 
 	public ArrayList<Instrument> getInstruments() {
 		return instruments;
+	}
+	
+	public ArrayList<Effect> getEffects() {
+		return effectsBar.getEffects();
 	}
 
 }

@@ -73,7 +73,7 @@ public abstract class Instrument extends Drawable {
 		layout.getControl("/3/rotary5").map(this, "effectParam", 4);
 		layout.getControl("/3/rotary6").map(this, "effectParam", 5);
 		layout.getControl("/4/toggle4").map(this, "trackAccelerometer");
-		layout.getControl("/4/xy").map(this, "setPositionFromXY");
+//		layout.getControl("/4/xy").map(this, "setPositionFromXY");
 		layout.getControl("/accxyz").map(this, "angleY");
 	}
 
@@ -82,7 +82,7 @@ public abstract class Instrument extends Drawable {
 	}
 
 	private void createCube() {
-		cube = new MagicCube(size);
+		cube = new MagicCube(size, this);
 		cube.setColor(color);
 		cube.setPosition(getPosition());
 		addChild(cube);
@@ -158,19 +158,23 @@ public abstract class Instrument extends Drawable {
 			setPosition(new PVector(p5.width * x, p5.height * (1 - y)));
 	}
 
-	public void setInitialPosition(PVector position) {
-		setPosition(position);
+	public void sendPosition2PD() {
+		PVector position = getPosition();
 		float x = position.x / p5.width;
 		float y = 1 - (position.y / p5.height);
 		Control pad = layout.getControl("/4/xy");
 		pad.setValues(y, x);
-		CubeOrchestraScene.scene.oscSendPD(pad.oscMessage());
+		CubeOrchestraScene.scene.oscSendInstrumentPD(this, pad.oscMessage());
 	}
 
 	@Override
 	public void setPosition(PVector position) {
-		super.setPosition(position);
 		cube.setPosition(position);
+	}
+	
+	@Override
+	public PVector getPosition() {
+		return cube.getPosition();
 	}
 
 	@Override
@@ -214,11 +218,18 @@ public abstract class Instrument extends Drawable {
 	protected Toggle muteToggle() {
 		return (Toggle) layout.getControl("/1/toggle2");
 	}
+	
+	public void setFXsEnabled() {
+		ArrayList<Effect> effects = CubeOrchestraScene.scene.getEffects();
+		for(Effect effect : effects) {
+			setFxEnabled(effect);
+		}
+	}
 
 	public void setFxEnabled(Effect effect) {
-		PVector position = this.getPosition();
-		Vector3D center = new Vector3D(position.x, position.y, position.z);
-		boolean fxStatus = effect.isGeometryContainsPointLocal(center);
+		Vector3D position = pVector2Vector3D(getPosition());
+		Vector3D center = effect.getCenterPointGlobal();
+		boolean fxStatus = center.distance(position) <= effect.getRadius();
 		int fxId = effect.getId();
 		if (effects[fxId] != fxStatus) {
 			effects[fxId] = fxStatus;

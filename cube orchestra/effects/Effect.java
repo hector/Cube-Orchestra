@@ -30,7 +30,7 @@ public class Effect extends Circle {
 		registerInputProcessor(new DragProcessor(this.getRenderer()));
 		addGestureListener(DragProcessor.class, new EffectDragAction());
 		registerInputProcessor(new ScaleProcessor(this.getRenderer()));
-		addGestureListener(ScaleProcessor.class, new EffectScaleAction());
+		addGestureListener(ScaleProcessor.class, new EffectScaleAction(this, 1, 10));
 	}
 	
 	public int getId() {
@@ -54,11 +54,16 @@ public class Effect extends Circle {
 	
 	// returns the amount of effect given the circle size (radius)
 	public float getAmount() {
-		float scale = getLocalMatrix().getScale().x;
 		float max = CubeOrchestraScene.app.height; // height is always smaller than width
-		float amount = radius * scale / (max / 2f); // amount is 1 when circle has the full height
+		float amount = getRadius() / (max / 2f); // amount is 1 when circle has the full height
 		if (amount > 1f) amount = 1f; // avoid values greater than 1
 		return amount;
+	}
+	
+	// Returns the global radius value (scaled)
+	public float getRadius() {
+		float scale = getLocalMatrix().getScale().x;
+		return radius * scale;
 	}
 
 }

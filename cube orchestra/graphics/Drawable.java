@@ -1,5 +1,7 @@
 package graphics;
 
+import java.util.ConcurrentModificationException;
+
 import main.CubeOrchestraScene;
 
 import org.mt4j.MTApplication;
@@ -79,8 +81,10 @@ public abstract class Drawable extends MTComponent {
 	
 	@Override
 	public void drawComponent(PGraphics g) {
-		super.drawComponent(g);
-		draw();
+		try {
+			super.drawComponent(g);
+			draw();
+		} catch (ConcurrentModificationException e) {}
 	}
 
 	public void draw() {

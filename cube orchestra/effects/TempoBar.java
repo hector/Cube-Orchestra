@@ -18,19 +18,19 @@ import org.mt4j.util.math.Vector3D;
 
 import processing.core.PApplet;
 
-public class TempoBar extends MTComponent {
+public class TempoBar extends Drawable {
 
 	MTSlider slider;
 	MTTextArea textField;
 	float bpm;
 
-	public TempoBar(PApplet p5, float bpm) {
-		super(p5);
+	public TempoBar(float bpm) {
+		super();
 		this.bpm = bpm;
 		// Slider
 		float width = p5.width / 4f;
-		float height = p5.height / 50f;
-		slider = new MTSlider(0, 0, width, height, 0, 240, p5);
+		float height = p5.height / 15f;
+		slider = new MTSlider(0, 0, width, height, 5, 240, p5);
 		slider.setValue(bpm);
 		slider.setFillColor(new MTColor(50, 50, 50, 100));
 		slider.setStrokeColor(new MTColor(150, 150, 150, 100));
@@ -48,7 +48,7 @@ public class TempoBar extends MTComponent {
 		addChild(slider);
 		// Text
 		textField = new MTTextArea(p5, FontManager
-				.getInstance().createFont(p5, "arial.ttf", 20,
+				.getInstance().createFont(p5, "arial.ttf", 36,
 						new MTColor(50, 50, 50, 150), // Font fill color
 						new MTColor(50, 50, 50, 150))); // Font outline color
 		textField.setNoFill(true);
@@ -56,8 +56,9 @@ public class TempoBar extends MTComponent {
 		textField.setAnchor(PositionAnchor.UPPER_LEFT);
 		setTextBPM();
 		textField.unregisterAllInputProcessors();
+		textField.setPickable(false);
 		addChild(textField);
-		textField.setPositionGlobal(new Vector3D(width, -5, 0));
+		textField.setPositionGlobal(new Vector3D(0, height, 0));
 	}
 
 	public void setBPM(float bpm) {
