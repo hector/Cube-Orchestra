@@ -73,7 +73,9 @@ public class MagicCube extends Cube {
 //		super.translateGlobal(directionVect);
 		PVector newPosition = vector3D2PVector(directionVect);
 		newPosition.add(getPosition());
-		setPosition(newPosition); // Avoid setter to avoid infinite recursion
+		if(pointInsideBoundaries(newPosition)) {
+			setPosition(newPosition); // Avoid setter to avoid infinite recursion
+		}		
 	}
 	
 	@Override

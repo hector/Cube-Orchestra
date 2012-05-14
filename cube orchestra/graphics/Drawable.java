@@ -187,11 +187,20 @@ public abstract class Drawable extends MTComponent {
 	// Callback of the drag action
 	@Override
 	public void translateGlobal(Vector3D directionVect) {
-		super.translateGlobal(directionVect);
 		PVector newPosition = vector3D2PVector(directionVect);
 		newPosition.add(getPosition());
+		super.translateGlobal(directionVect);
 		setPosition(newPosition);
 	}
+	
+	// Checks if a given point is inside the boundaries of the application
+	public static boolean pointInsideBoundaries(PVector point) {
+		return point.x >= 0 && point.x <= CubeOrchestraScene.app.width && point.y >=0 && point.y <= CubeOrchestraScene.app.height;
+	}	
+	
+	public static boolean pointInsideBoundaries(Vector3D point) {
+		return pointInsideBoundaries(vector3D2PVector(point));
+	}	
 	
 	public static Vector3D[] pVector2Vector3D(PVector[] pVectors) {
 		Vector3D[] vectors3D = new Vector3D[pVectors.length];

@@ -5,6 +5,7 @@ import instruments.Instrument;
 import java.util.ArrayList;
 
 import graphics.Circle;
+import graphics.Drawable;
 import main.CubeOrchestraScene;
 
 import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragProcessor;
@@ -15,6 +16,7 @@ import org.mt4j.util.math.Vector3D;
 import oscP5.OscMessage;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class Effect extends Circle {
 
@@ -65,5 +67,13 @@ public class Effect extends Circle {
 		float scale = getLocalMatrix().getScale().x;
 		return radius * scale;
 	}
+	
+	@Override
+	public void translateGlobal(Vector3D directionVect) {
+		Vector3D newPosition = new Vector3D(directionVect);
+		if(Drawable.pointInsideBoundaries(newPosition.addLocal(getCenterPointGlobal()))) {
+			super.translateGlobal(directionVect);
+		}		
+	}	
 
 }
