@@ -1,0 +1,817 @@
+#N canvas 613 273 403 164 10;
+#N canvas 665 53 251 232 gamepad-data 0;
+#X msg 9 121 poll 20;
+#X obj 24 176 print;
+#X obj 9 151 hid;
+#X obj 78 103 loadbang;
+#X msg 78 134 print;
+#N canvas 286 26 294 429 data-routing 0;
+#X obj 42 -17 inlet;
+#X obj 9 183 route key abs;
+#X floatatom 155 322 5 0 0 0 - - -;
+#X obj 151 262 t b f;
+#X obj 46 367 s gamepad2SliceJockey-x;
+#X obj 98 345 s gamepad2SliceJockey-y;
+#X obj 151 288 + 0;
+#N canvas 46 80 322 250 route-buttons 0;
+#X obj 17 14 inlet;
+#X obj 110 204 s gamepad2SliceJockey-button;
+#X obj 96 177 f;
+#X msg 17 143 20;
+#X msg 56 144 21;
+#X msg 96 144 22;
+#X obj 96 228 outlet;
+#X obj 17 40 route btn_0 btn_1 btn_2 btn_3 btn_4 btn_5 btn_6;
+#X obj 17 116 sel 1;
+#X obj 56 116 sel 1;
+#X obj 96 116 sel 1;
+#X obj 136 116 sel 1;
+#X obj 176 116 sel 1;
+#X obj 216 116 sel 1;
+#X obj 256 116 sel 1;
+#X obj 65 14 loadbang;
+#X text 11 56 1;
+#X text 45 57 2;
+#X text 87 58 3;
+#X text 128 57 4;
+#X text 168 57 5;
+#X text 206 57 6;
+#X text 248 57 7;
+#X msg 176 145 9;
+#X msg 216 145 7;
+#X msg 256 145 8;
+#X msg 136 145;
+#X obj 17 88 change;
+#X obj 59 88 change;
+#X obj 102 89 change;
+#X obj 176 89 change;
+#X obj 218 89 change;
+#X obj 261 90 change;
+#X connect 0 0 7 0;
+#X connect 2 0 1 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 7 0 27 0;
+#X connect 7 1 28 0;
+#X connect 7 2 29 0;
+#X connect 7 4 30 0;
+#X connect 7 5 31 0;
+#X connect 7 6 32 0;
+#X connect 8 0 3 0;
+#X connect 9 0 4 0;
+#X connect 10 0 5 0;
+#X connect 11 0 26 0;
+#X connect 12 0 23 0;
+#X connect 13 0 24 0;
+#X connect 14 0 25 0;
+#X connect 15 0 3 0;
+#X connect 23 0 2 0;
+#X connect 24 0 2 0;
+#X connect 25 0 2 0;
+#X connect 26 0 2 0;
+#X connect 27 0 8 0;
+#X connect 28 0 9 0;
+#X connect 29 0 10 0;
+#X connect 30 0 12 0;
+#X connect 31 0 13 0;
+#X connect 32 0 14 0;
+#X restore 9 233 pd route-buttons;
+#N canvas 686 97 330 294 route-joysticks 0;
+#X obj 18 66 t f f;
+#X obj 62 67 t f f;
+#X obj 106 67 t f f;
+#X obj 150 67 t f f;
+#N canvas 672 298 197 209 inc/dec 0;
+#X obj 17 16 inlet;
+#X obj 17 177 outlet;
+#X obj 17 114 delta;
+#X obj 119 117 delta;
+#X obj 17 139 moses 0;
+#X obj 119 141 moses 1;
+#X obj 68 87 moses 136;
+#X obj 17 60 moses 120;
+#N canvas 369 234 233 175 calibrate 0;
+#X obj 41 43 inlet;
+#X obj 26 141 outlet;
+#X obj 73 141 outlet;
+#X obj 26 104 - 8;
+#X obj 73 105 + 8;
+#X obj 26 18 r \$0-calibrate;
+#X obj 119 142 outlet;
+#X obj 88 44 r \$0-jitter-tolerance;
+#X floatatom 105 106 5 0 0 0 - - -;
+#X obj 88 73 int;
+#X obj 26 71 f 128;
+#X connect 0 0 10 1;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 10 0;
+#X connect 7 0 9 0;
+#X connect 9 0 4 1;
+#X connect 9 0 3 1;
+#X connect 9 0 8 0;
+#X connect 10 0 3 0;
+#X connect 10 0 4 0;
+#X connect 10 0 6 0;
+#X restore 68 33 pd calibrate;
+#X obj 137 176 outlet;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 2 0 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 1 1 0;
+#X connect 6 1 3 0;
+#X connect 7 0 2 0;
+#X connect 7 1 6 0;
+#X connect 8 0 7 1;
+#X connect 8 1 6 1;
+#X connect 8 2 9 0;
+#X restore 18 136 pd inc/dec;
+#X msg 89 93 0;
+#X msg 133 94 10;
+#X obj 18 12 inlet;
+#X obj 18 231 outlet;
+#X obj 136 232 outlet;
+#X obj 251 232 outlet;
+#X obj 251 137 change;
+#X text 18 254 left;
+#X text 135 254 right;
+#X text 249 253 joystick ID;
+#N canvas 672 299 195 208 inc/dec 0;
+#X obj 17 16 inlet;
+#X obj 17 177 outlet;
+#X obj 17 114 delta;
+#X obj 119 117 delta;
+#X obj 17 139 moses 0;
+#X obj 119 141 moses 1;
+#X obj 68 87 moses 136;
+#X obj 17 60 moses 120;
+#N canvas 8 40 229 176 calibrate 0;
+#X obj 41 43 inlet;
+#X obj 26 141 outlet;
+#X obj 73 141 outlet;
+#X obj 26 104 - 8;
+#X obj 73 105 + 8;
+#X obj 26 18 r \$0-calibrate;
+#X obj 119 142 outlet;
+#X obj 88 44 r \$0-jitter-tolerance;
+#X floatatom 105 106 5 0 0 0 - - -;
+#X obj 88 73 int;
+#X obj 26 71 f 128;
+#X connect 0 0 10 1;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 10 0;
+#X connect 7 0 9 0;
+#X connect 9 0 8 0;
+#X connect 9 0 4 1;
+#X connect 10 0 3 0;
+#X connect 10 0 4 0;
+#X connect 10 0 6 0;
+#X restore 68 33 pd calibrate;
+#X obj 137 176 outlet;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 2 0 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 1 1 0;
+#X connect 6 1 3 0;
+#X connect 7 0 2 0;
+#X connect 7 1 6 0;
+#X connect 8 0 7 1;
+#X connect 8 1 6 1;
+#X connect 8 2 9 0;
+#X restore 31 195 pd inc/dec;
+#N canvas 672 295 188 212 inc/dec 0;
+#X obj 17 16 inlet;
+#X obj 17 177 outlet;
+#X obj 17 114 delta;
+#X obj 119 117 delta;
+#X obj 17 139 moses 0;
+#X obj 119 141 moses 1;
+#X obj 68 87 moses 136;
+#X obj 17 60 moses 120;
+#N canvas 8 40 228 180 calibrate 0;
+#X obj 41 43 inlet;
+#X obj 26 141 outlet;
+#X obj 73 141 outlet;
+#X obj 26 104 - 8;
+#X obj 73 105 + 8;
+#X obj 26 18 r \$0-calibrate;
+#X obj 119 142 outlet;
+#X obj 88 43 r \$0-jitter-tolerance;
+#X floatatom 105 105 5 0 0 0 - - -;
+#X obj 88 72 int;
+#X obj 26 71 f 128;
+#X connect 0 0 10 1;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 10 0;
+#X connect 7 0 9 0;
+#X connect 9 0 8 0;
+#X connect 9 0 4 1;
+#X connect 10 0 3 0;
+#X connect 10 0 4 0;
+#X connect 10 0 6 0;
+#X restore 68 33 pd calibrate;
+#X obj 137 178 outlet;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 2 0 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 1 1 0;
+#X connect 6 1 3 0;
+#X connect 7 0 2 0;
+#X connect 7 1 6 0;
+#X connect 8 0 7 1;
+#X connect 8 1 6 1;
+#X connect 8 2 9 0;
+#X restore 150 195 pd inc/dec;
+#N canvas 672 300 192 207 inc/dec 0;
+#X obj 17 16 inlet;
+#X obj 17 177 outlet;
+#X obj 17 114 delta;
+#X obj 119 117 delta;
+#X obj 17 139 moses 0;
+#X obj 119 141 moses 1;
+#X obj 68 87 moses 136;
+#X obj 17 60 moses 120;
+#N canvas 8 40 232 172 calibrate 0;
+#X obj 41 43 inlet;
+#X obj 26 141 outlet;
+#X obj 73 141 outlet;
+#X obj 26 104 - 8;
+#X obj 73 105 + 8;
+#X obj 26 18 r \$0-calibrate;
+#X obj 119 142 outlet;
+#X obj 88 43 r \$0-jitter-tolerance;
+#X floatatom 105 105 5 0 0 0 - - -;
+#X obj 88 72 int;
+#X obj 26 71 f 128;
+#X connect 0 0 10 1;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 10 0;
+#X connect 7 0 9 0;
+#X connect 9 0 8 0;
+#X connect 9 0 4 1;
+#X connect 10 0 3 0;
+#X connect 10 0 4 0;
+#X connect 10 0 6 0;
+#X restore 68 33 pd calibrate;
+#X obj 137 176 outlet;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 2 0 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 1 1 0;
+#X connect 6 1 3 0;
+#X connect 7 0 2 0;
+#X connect 7 1 6 0;
+#X connect 8 0 7 1;
+#X connect 8 1 6 1;
+#X connect 8 2 9 0;
+#X restore 136 136 pd inc/dec;
+#X floatatom 75 163 5 0 0 0 - - -;
+#X floatatom 193 163 5 0 0 0 - - -;
+#X floatatom 88 224 5 0 0 0 - - -;
+#X floatatom 207 221 5 0 0 0 - - -;
+#N canvas 422 125 249 291 route-hatswitch 0;
+#X obj 21 20 inlet;
+#X obj 21 53 route abs_hat0x abs_hat0y;
+#X obj 21 81 change;
+#X obj 94 81 change;
+#X floatatom 36 110 5 0 0 0 - - -;
+#X floatatom 102 110 5 0 0 0 - - -;
+#X obj 21 248 s \$0-hatswitch;
+#X obj 21 132 sel -1 1;
+#X obj 94 132 sel -1 1;
+#X msg 48 159 28;
+#X obj 21 192 f;
+#X obj 32 219 s gamepad2SliceJockey-button;
+#X msg 124 159 25;
+#X msg 94 159 26;
+#X msg 21 159 27;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 4 0;
+#X connect 2 0 7 0;
+#X connect 3 0 5 0;
+#X connect 3 0 8 0;
+#X connect 7 0 14 0;
+#X connect 7 1 9 0;
+#X connect 8 0 13 0;
+#X connect 8 1 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 10 0 6 0;
+#X connect 12 0 10 0;
+#X connect 13 0 10 0;
+#X connect 14 0 10 0;
+#X restore 195 68 pd route-hatswitch;
+#N canvas 619 41 298 235 joystick-axes-route-options 0;
+#X obj 45 70 inlet;
+#X obj 45 202 outlet;
+#X obj 90 202 outlet;
+#X obj 136 202 outlet;
+#X obj 182 202 outlet;
+#X obj 12 169 route abs_x abs_y abs_z abs_rz;
+#X obj 12 95 gate 2;
+#X obj 12 14 r \$0-swap-axes;
+#X obj 12 70 + 1;
+#X obj 12 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 228 202 outlet;
+#X text 200 169 normal;
+#X text 238 121 swapped;
+#X obj 45 121 route abs_x abs_y abs_rz abs_rx;
+#X connect 0 0 6 1;
+#X connect 5 0 1 0;
+#X connect 5 1 2 0;
+#X connect 5 2 3 0;
+#X connect 5 3 4 0;
+#X connect 6 0 5 0;
+#X connect 6 1 13 0;
+#X connect 7 0 9 0;
+#X connect 8 0 6 0;
+#X connect 9 0 8 0;
+#X connect 13 0 1 0;
+#X connect 13 1 2 0;
+#X connect 13 2 3 0;
+#X connect 13 3 4 0;
+#X connect 13 4 10 0;
+#X restore 18 39 pd joystick-axes-route-options;
+#X connect 0 0 4 0;
+#X connect 0 1 5 0;
+#X connect 1 0 17 0;
+#X connect 1 1 5 0;
+#X connect 2 0 15 0;
+#X connect 2 1 6 0;
+#X connect 3 0 16 0;
+#X connect 3 1 6 0;
+#X connect 4 0 8 0;
+#X connect 4 1 18 0;
+#X connect 5 0 11 0;
+#X connect 6 0 11 0;
+#X connect 7 0 23 0;
+#X connect 11 0 10 0;
+#X connect 15 0 8 0;
+#X connect 15 1 20 0;
+#X connect 16 0 9 0;
+#X connect 16 1 21 0;
+#X connect 17 0 9 0;
+#X connect 17 1 19 0;
+#X connect 23 0 0 0;
+#X connect 23 1 1 0;
+#X connect 23 2 2 0;
+#X connect 23 3 3 0;
+#X connect 23 4 22 0;
+#X restore 46 207 pd route-joysticks;
+#X obj 98 322 pack 0 0;
+#X obj 46 322 pack 0 0;
+#X obj 68 285 loadbang;
+#X floatatom 17 63 3 0 0 0 - - -;
+#X obj 9 86 gate 3;
+#N canvas 763 19 237 389 switch 0;
+#X obj 59 8 inlet;
+#X obj 98 355 outlet;
+#X msg 98 236 2;
+#X msg 147 236 3;
+#X obj 98 308 change;
+#X obj 98 82 route btn_8 btn_9;
+#X obj 98 135 sel 1;
+#X obj 147 135 sel 1;
+#N canvas 744 526 299 169 indicators 0;
+#X obj 33 10 inlet;
+#X obj 33 123 s slicycle1-active;
+#X obj 33 99 metro 500;
+#X obj 33 74 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 33 47 == 2;
+#X obj 156 46 == 3;
+#X obj 156 98 metro 500;
+#X obj 156 73 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 156 123 s slicycle2-active;
+#X connect 0 0 4 0;
+#X connect 0 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X restore 105 332 pd indicators;
+#X obj 98 182 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 147 182 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 98 210 sel 1;
+#X obj 147 210 sel 1;
+#X msg 157 158 0;
+#X msg 106 157 0;
+#X obj 27 240 +;
+#X obj 27 264 sel 0;
+#X obj 13 214 f;
+#X obj 42 214 f;
+#X obj 59 51 t b b a;
+#X msg 27 291 1;
+#X obj 59 30 route key;
+#X obj 98 111 change;
+#X obj 147 111 change;
+#X connect 0 0 21 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 4 0 8 0;
+#X connect 5 0 22 0;
+#X connect 5 1 23 0;
+#X connect 6 0 9 0;
+#X connect 7 0 10 0;
+#X connect 9 0 11 0;
+#X connect 9 0 17 1;
+#X connect 10 0 12 0;
+#X connect 10 0 18 1;
+#X connect 11 0 2 0;
+#X connect 11 0 13 0;
+#X connect 12 0 3 0;
+#X connect 12 0 14 0;
+#X connect 13 0 10 0;
+#X connect 14 0 9 0;
+#X connect 15 0 16 0;
+#X connect 16 0 20 0;
+#X connect 17 0 15 0;
+#X connect 18 0 15 1;
+#X connect 19 0 17 0;
+#X connect 19 1 18 0;
+#X connect 19 2 5 0;
+#X connect 20 0 4 0;
+#X connect 21 0 19 0;
+#X connect 22 0 6 0;
+#X connect 23 0 7 0;
+#X restore 9 38 pd switch;
+#N canvas 78 139 411 353 slicycle1 0;
+#X obj 17 10 inlet;
+#X obj 17 325 s clear-slicycle1;
+#X obj 122 249 s recycle-slicycle1;
+#X obj 52 298 s nslices-slicycle1;
+#X obj 87 275 s set-inputstatus-slicycle1;
+#X obj 223 166 s pattern-slicycle1;
+#X obj 180 193 s filtertype-slicycle1;
+#X obj 138 221 s filtermod-slicycle1;
+#X obj 266 143 s interrupt-slicycle1;
+#X obj 138 117 sel 1;
+#X obj 180 117 sel 1;
+#X obj 223 117 sel 1;
+#X obj 266 117 sel 1;
+#X text 146 70 1;
+#X text 269 70 4;
+#X text 228 71 3;
+#X text 186 70 2;
+#X obj 138 54 route btn_0 btn_1 btn_2 btn_3;
+#X obj 17 38 route abs key;
+#N canvas 714 121 231 208 route-hatswitch 0;
+#X obj 21 20 inlet;
+#X obj 21 53 route abs_hat0x abs_hat0y;
+#X obj 21 81 change;
+#X obj 94 81 change;
+#X floatatom 36 110 5 0 0 0 - - -;
+#X floatatom 102 110 5 0 0 0 - - -;
+#X obj 21 132 sel -1 1;
+#X obj 94 132 sel -1 1;
+#X obj 21 177 outlet;
+#X obj 68 177 outlet;
+#X obj 116 177 outlet;
+#X obj 162 177 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 4 0;
+#X connect 2 0 6 0;
+#X connect 3 0 5 0;
+#X connect 3 0 7 0;
+#X connect 6 0 11 0;
+#X connect 6 1 9 0;
+#X connect 7 0 8 0;
+#X connect 7 1 10 0;
+#X restore 17 82 pd route-hatswitch;
+#X obj 138 85 change;
+#X obj 180 86 change;
+#X obj 223 86 change;
+#X obj 266 86 change;
+#X connect 0 0 18 0;
+#X connect 9 0 7 0;
+#X connect 10 0 6 0;
+#X connect 11 0 5 0;
+#X connect 12 0 8 0;
+#X connect 17 0 20 0;
+#X connect 17 1 21 0;
+#X connect 17 2 22 0;
+#X connect 17 3 23 0;
+#X connect 18 0 19 0;
+#X connect 18 1 17 0;
+#X connect 19 0 1 0;
+#X connect 19 1 3 0;
+#X connect 19 2 4 0;
+#X connect 19 3 2 0;
+#X connect 20 0 9 0;
+#X connect 21 0 10 0;
+#X connect 22 0 11 0;
+#X connect 23 0 12 0;
+#X restore 25 156 pd slicycle1;
+#X obj 42 11 t a a;
+#X text 73 38 btn_8 switches to slicycle1;
+#X text 73 60 btn_9 switches to slicycle2;
+#N canvas 438 108 408 364 slicycle2 0;
+#X obj 10 4 inlet;
+#X obj 10 32 route abs key;
+#X obj 10 330 s clear-slicycle2;
+#X obj 45 301 s nslices-slicycle2;
+#X obj 80 274 s set-inputstatus-slicycle2;
+#X obj 115 248 s recycle-slicycle2;
+#N canvas 714 121 231 208 route-hatswitch 0;
+#X obj 21 20 inlet;
+#X obj 21 53 route abs_hat0x abs_hat0y;
+#X obj 21 81 change;
+#X obj 94 81 change;
+#X floatatom 36 110 5 0 0 0 - - -;
+#X floatatom 102 110 5 0 0 0 - - -;
+#X obj 21 132 sel -1 1;
+#X obj 94 132 sel -1 1;
+#X obj 21 177 outlet;
+#X obj 68 177 outlet;
+#X obj 116 177 outlet;
+#X obj 162 177 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 4 0;
+#X connect 2 0 6 0;
+#X connect 3 0 5 0;
+#X connect 3 0 7 0;
+#X connect 6 0 11 0;
+#X connect 6 1 9 0;
+#X connect 7 0 8 0;
+#X connect 7 1 10 0;
+#X restore 10 85 pd route-hatswitch;
+#X obj 138 113 sel 1;
+#X obj 180 113 sel 1;
+#X obj 223 113 sel 1;
+#X obj 266 113 sel 1;
+#X text 146 66 1;
+#X text 269 66 4;
+#X text 228 67 3;
+#X text 186 66 2;
+#X obj 138 50 route btn_0 btn_1 btn_2 btn_3;
+#X obj 138 81 change;
+#X obj 180 82 change;
+#X obj 223 82 change;
+#X obj 266 82 change;
+#X obj 138 217 s filtermod-slicycle2;
+#X obj 180 189 s filtertype-slicycle2;
+#X obj 223 162 s pattern-slicycle2;
+#X obj 266 139 s interrupt-slicycle2;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 1 1 15 0;
+#X connect 6 0 2 0;
+#X connect 6 1 3 0;
+#X connect 6 2 4 0;
+#X connect 6 3 5 0;
+#X connect 7 0 20 0;
+#X connect 8 0 21 0;
+#X connect 9 0 22 0;
+#X connect 10 0 23 0;
+#X connect 15 0 16 0;
+#X connect 15 1 17 0;
+#X connect 15 2 18 0;
+#X connect 15 3 19 0;
+#X connect 16 0 7 0;
+#X connect 17 0 8 0;
+#X connect 18 0 9 0;
+#X connect 19 0 10 0;
+#X restore 42 128 pd slicycle2;
+#X text 2 102 1;
+#X text 37 102 3;
+#X text 19 102 2;
+#X floatatom 27 277 5 0 0 0 - - -;
+#X obj 127 233 r \$0-hatswitch;
+#X connect 0 0 16 0;
+#X connect 1 0 7 0;
+#X connect 1 1 8 0;
+#X connect 3 0 6 0;
+#X connect 3 1 6 1;
+#X connect 6 0 2 0;
+#X connect 6 0 9 1;
+#X connect 6 0 10 1;
+#X connect 7 0 6 0;
+#X connect 8 0 10 0;
+#X connect 8 0 23 0;
+#X connect 8 1 9 0;
+#X connect 8 2 3 0;
+#X connect 9 0 5 0;
+#X connect 10 0 4 0;
+#X connect 11 0 10 0;
+#X connect 11 0 9 0;
+#X connect 13 0 1 0;
+#X connect 13 1 15 0;
+#X connect 13 2 19 0;
+#X connect 14 0 12 0;
+#X connect 14 0 13 0;
+#X connect 16 0 13 1;
+#X connect 16 1 14 0;
+#X connect 24 0 6 0;
+#X restore 9 202 pd data-routing;
+#X obj 9 97 delay 100;
+#X msg 36 68 open \$1;
+#X obj 9 3 r \$0-devicenr;
+#X obj 9 36 t b f;
+#X obj 104 3 r \$0-jitter-tolerance;
+#X obj 104 26 int;
+#X obj 104 76 s \$0-jitter-numbox;
+#X obj 104 52 * 2;
+#X connect 0 0 2 0;
+#X connect 2 0 5 0;
+#X connect 2 1 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 6 0 0 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 6 0;
+#X connect 9 1 7 0;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 13 0 12 0;
+#X restore 294 128 pd gamepad-data;
+#X obj 11 95 bng 50 250 50 0 \$0-calibrate empty empty 0 25 0 10 -228856
+-260097 -1;
+#X text 12 111 calibrate;
+#X obj 145 95 hsl 128 50 4 20 0 1 \$0-jitter-tolerance empty empty
+-2 -8 0 10 -228856 -260097 -1 2900 0;
+#X text 152 111 jitter tolerance;
+#X text 12 -10 connect a gamepad to your computer before starting up
+Pd and gamepad2SliceJockey.pd;
+#X text 294 88 click to open:;
+#X obj 12 67 hradio 15 1 0 20 \$0-devicenr empty empty 0 -8 0 10 -228856
+-260097 -1 5;
+#X floatatom 320 66 5 0 0 0 - #0-devicenr -;
+#X text 12 25 Check the Pd window to see available devices \, and select
+your device here:;
+#X text 14 66 0;
+#X text 162 66 10;
+#X text 241 100 5;
+#X text 237 66 15;
+#X floatatom 241 126 5 0 0 0 - #0-jitter-numbox -;
+#X obj 71 95 tgl 50 1 \$0-swap-axes empty empty 17 7 0 10 -228856 -260097
+-1 0 1;
+#X text 72 111 swap z-axes;
+#N canvas 83 86 753 514 gamepad-help 0;
+#X obj 545 137 hradio 50 1 0 1 open-notes-help \$0-dummyreceive oooo
+3 25 1 20 -262144 -262144 -1 0;
+#X obj 492 137 hradio 50 1 0 1 open-notes-help \$0-dummyreceive oo
+4 25 1 40 -262144 -262144 -1 0;
+#X obj 439 137 hradio 50 1 0 1 open-notes-help \$0-dummyreceive o 9
+25 1 60 -262144 -262144 -1 0;
+#X obj -46 190 hradio 50 1 0 1 open-distortion-help \$0-dummyreceive
+++ 2 25 1 40 -228856 -228856 -1 0;
+#X obj 7 137 hradio 50 1 0 1 open-filterfreq-help \$0-dummyreceive
+---- 0 27 1 40 -262144 -262144 -1 0;
+#X obj 60 190 hradio 50 1 0 1 open-delay-help \$0-dummyreceive ]]]]
+4 25 1 40 -228856 -228856 -33289 0;
+#X obj 113 190 hradio 50 1 0 1 open-reverb-help \$0-dummyreceive )))
+7 25 1 40 -228856 -228856 -33289 0;
+#X obj 196 8 hradio 50 1 0 1 open-reverb-help \$0-dummyreceive )))
+7 25 1 40 -1 -1 -262144 0;
+#X obj 302 61 hradio 50 1 0 1 open-tickdelay-help \$0-dummyreceive
+[[]] 4 25 1 40 -1 -1 -262144 0;
+#X obj 214 180 bng 60 250 50 0 \$0-dummysend \$0-dummyreceive joystick
+5 30 0 10 -262144 -260097 -1;
+#X obj 332 179 bng 60 250 50 0 \$0-dummysend \$0-dummyreceive joystick
+5 30 0 10 -228856 -260097 -1;
+#X obj 545 190 hradio 50 1 0 1 open-notes-help \$0-dummyreceive oooo
+3 25 1 20 -228856 -228856 -1 0;
+#X obj 492 190 hradio 50 1 0 1 open-notes-help \$0-dummyreceive oo
+4 25 1 40 -228856 -228856 -1 0;
+#X obj 439 190 hradio 50 1 0 1 open-notes-help \$0-dummyreceive o 9
+25 1 60 -228856 -228856 -1 0;
+#X obj 7 190 hradio 50 1 0 1 open-filterfreq-help \$0-dummyreceive
+---- 0 27 1 40 -228856 -228856 -1 0;
+#X obj -46 137 hradio 50 1 0 1 open-distortion-help \$0-dummyreceive
+++ 2 25 1 40 -262144 -262144 -1 0;
+#X obj 113 137 hradio 50 1 0 1 open-reverb-help \$0-dummyreceive )))
+7 25 1 40 -262144 -262144 -33289 0;
+#X obj 60 137 hradio 50 1 0 1 open-delay-help \$0-dummyreceive ]]]]
+4 25 1 40 -262144 -262144 -33289 0;
+#X obj 598 137 hradio 50 1 0 1 \$0-dummysend \$0-dummyreceive empty
+4 25 1 40 -262144 -262144 -33289 0;
+#X obj 598 190 hradio 50 1 0 1 \$0-dummysend \$0-dummyreceive empty
+4 25 1 40 -228856 -228856 -33289 0;
+#X obj 7 521 bng 50 250 50 0 open-nr-of-slices-help \$0-dummyreceive
+4 20 27 1 20 -233017 -260818 -33289;
+#X obj 60 521 bng 50 100 50 0 open-slicycle-input-help \$0-dummyreceive
+> 15 25 1 40 -228856 -260818 -66577;
+#X obj 113 521 bng 50 100 50 0 open-slice-recycle-help \$0-dummyreceive
+< 13 25 1 40 -228856 -260818 -66577;
+#X obj -46 521 bng 50 250 50 0 open-slice-clear-help \$0-dummyreceive
+//// 8 28 1 30 -233017 -260818 -66577;
+#X obj 460 521 bng 50 100 50 0 open-slice-interrupt-help \$0-dummyreceive
+|||| 10 29 1 30 -228856 -260818 -66577;
+#X obj 513 521 bng 50 100 50 0 open-pattern-play-help \$0-dummyreceive
+== 4 25 1 35 -228856 -260818 -66577;
+#X obj 619 521 bng 50 100 50 0 open-filter-type-help \$0-dummyreceive
+all 12 26 1 20 -228856 -260818 -66577;
+#X obj 566 521 bng 50 100 50 0 open-filter-modulation-help \$0-dummyreceive
+---- 0 27 1 40 -228856 -260818 -66577;
+#X obj 7 468 bng 50 250 50 0 open-nr-of-slices-help \$0-dummyreceive
+4 20 27 1 20 -262144 -262144 -33289;
+#X obj 60 468 bng 50 100 50 0 open-slicycle-input-help \$0-dummyreceive
+> 15 25 1 40 -262144 -262144 -66577;
+#X obj 113 468 bng 50 100 50 0 open-slice-recycle-help \$0-dummyreceive
+< 13 25 1 40 -262144 -262144 -66577;
+#X obj -46 468 bng 50 250 50 0 open-slice-clear-help \$0-dummyreceive
+//// 8 28 1 30 -262144 -262144 -66577;
+#X obj 460 468 bng 50 100 50 0 open-slice-interrupt-help \$0-dummyreceive
+|||| 10 29 1 30 -262144 -262144 -66577;
+#X obj 513 468 bng 50 100 50 0 open-pattern-play-help \$0-dummyreceive
+== 4 25 1 35 -262144 -262144 -66577;
+#X obj 619 468 bng 50 100 50 0 open-filter-type-help \$0-dummyreceive
+all 12 26 1 20 -262144 -262144 -66577;
+#X obj 566 468 bng 50 100 50 0 open-filter-modulation-help \$0-dummyreceive
+---- 0 27 1 40 -262144 -262144 -66577;
+#X text 460 447 buttons;
+#X obj 208 467 hradio 50 1 0 1 \$0-dummysend \$0-dummyreceive empty
+4 25 1 40 -262144 -262144 -33289 0;
+#X obj 353 466 hradio 50 1 0 1 \$0-dummysend \$0-dummyreceive empty
+4 25 1 40 -228856 -228856 -33289 0;
+#X text 283 482 buttons;
+#X text 227 483 9;
+#X text 369 483 10;
+#X obj 70 392 bng 15 250 50 0 empty slicycle1-active empty 12 2 1 10
+-1 -257985 -262144;
+#X obj 523 390 bng 15 250 50 0 empty slicycle2-active empty 12 2 1
+10 -1 -257985 -262144;
+#X text 302 663 ----;
+#N canvas 387 26 505 349 gamepad&PureData 0;
+#X text 21 124 It is important to first connect the gamepad to your
+computer \, then start Pd and load patches. [hid] and [hidin] can only
+see devices which were already connected before Pd was started.;
+#X obj 22 98 pddplink http://puredata.info/docs/tutorials/HowToReadHIDDevicesInLinuxWithoutBeingRoot
+;
+#X text 21 19 Capturing of gamepad data is done in Pure Data with Hans
+Christoph Steiner's [hid] object (OSX \, Linux) or Olaf Matthes' [hidin]
+(Windows). In Linux \, a user may have no permission to read data from
+devices. Pure Data has this howto-page for that case:;
+#X text 21 196 After loading the patch [gamepad2SliceJockey] \, move
+around the analog sticks and click the calibrate button. If objects
+in Slice//Jockey start to drift \, click the calibration button once
+again. In case this does not help in the long run \, set the jitter
+tolerance to a higher value.;
+#X text 20 280 [gamepad2SliceJockey] is designed for Dual Analog type
+gamepads. There may be differences among such gamepads \, like positions
+of buttons. In case the z-axes are swapped (right analog stick) \,
+enable 'swap z-axes'.;
+#X restore 521 49 pd gamepad&PureData;
+#X text 518 28 click for more info:;
+#X text 140 595 Only one section at a time is activated \, and the
+x-y field controls are inactive at that moment. To return to the x-y
+field objects \, de-activate the slice-recycle section by pressing
+button 9 or 10 once more.;
+#X text -46 115 hatswitch: effects;
+#X obj 249 8 hradio 50 1 0 1 open-reverb-help \$0-dummyreceive 130
+4 26 1 25 -1 -1 -262144 0;
+#X obj 355 61 hradio 50 1 0 1 open-pitch-help \$0-dummyreceive ^^ 1
+25 1 50 -1 -1 -262144 0;
+#X obj 196 61 hradio 50 1 0 1 open-input-level-help \$0-dummyreceive
+> 10 25 1 50 -1 -1 -262144 0;
+#X obj 249 61 hradio 50 1 0 1 open-crossfader-help \$0-dummyreceive
+X 8 29 1 50 -1 -1 -262144 0;
+#X obj 302 8 hradio 50 1 0 1 \$0-dummysend \$0-dummyreceive empty 1
+25 1 50 -1 -1 -262144 0;
+#X obj 355 8 hradio 50 1 0 1 \$0-dummysend \$0-dummyreceive empty 1
+25 1 50 -1 -1 -262144 0;
+#X text 77 50 global functions;
+#X text 320 260 Two x-y objects at a time are activated \, recognizable
+by an orange color. They can be repositioned by the left and right
+analogue sticks.;
+#X text -49 259 This lay-out indicates the mapping of Dual Analog type
+gamepad controls to objects on the x-y field in Slice//Jockey. The
+exact layout of button numbers differs from one gamepad to another.
+;
+#X text -47 448 hatswitch;
+#X text 440 117 thumb buttons: notes;
+#X text 83 30 finger buttons:;
+#X text 135 370 The lay-out below shows the mapping of Dual Analog
+type gamepad controls to buttons of the left and right slice-recycle
+sections of Slice//Jockey. Button 9 activates the left section \, button
+10 activates the right section. A blinking yellow led indicates the
+active state of a section.;
+#X restore 294 107 pd gamepad-help;
+#X text 90 67 5;
