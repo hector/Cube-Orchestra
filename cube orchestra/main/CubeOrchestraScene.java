@@ -73,11 +73,11 @@ public class CubeOrchestraScene extends AbstractScene {
 		canvas.addChild(effectsBar);
 		canvas.addChild(instrumentSelection);
 		canvas.addChild(tempoBar);
-		try {
-			createSynthesizer("qweqwe");
-			synthesizers.get(0).sequencer(true);
-		} catch (Exception e) {
-		}
+//		try {
+//			createSynthesizer("qweqwe");
+//			synthesizers.get(0).sequencer(true);
+//		} catch (Exception e) {
+//		}
 
 		// Show touches
 //		this.registerGlobalInputProcessor(new CursorTracer(app, this));
