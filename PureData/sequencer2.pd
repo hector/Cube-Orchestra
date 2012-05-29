@@ -1,6 +1,6 @@
-#N canvas 0 30 1278 662 12;
+#N canvas 909 121 1278 662 12;
 #X obj 500 5 hradio 30 1 0 16 empty \$0-step Pitch_sequencer 0 -8 0
-10 -257985 -1 -1 0;
+10 -257985 -1 -1 6;
 #X obj 63 511 outlet;
 #X msg 200 161 60;
 #X obj 530 44 select 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
@@ -65,9 +65,9 @@
 #X connect 26 0 22 0;
 #X restore -111 239 pd clock;
 #X obj -111 77 tgl 20 0 empty empty start/stop 20 8 0 8 -241291 -258699
--1 0 15;
+-1 15 15;
 #X floatatom -103 105 0 0 0 0 - - -;
-#X text -69 105 tempo;
+#X text -48 109 tempo;
 #X obj -94 129 bng 20 250 50 0 empty empty reset 30 10 0 8 -241291
 -258699 -1;
 #X floatatom -111 264 0 0 0 0 - - -;
@@ -98,7 +98,7 @@
 #X msg 328 160 60;
 #X obj 328 185 spigot;
 #X obj 367 161 tgl 15 0 empty \$1-a3 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X msg 392 159 60;
 #X obj 392 184 spigot;
 #X obj 431 160 tgl 15 0 empty \$1-a4 empty 17 7 0 10 -262144 -1 -1
@@ -114,7 +114,7 @@
 #X msg 581 158 60;
 #X obj 581 183 spigot;
 #X obj 620 159 tgl 15 0 empty \$1-a7 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X msg 645 157 60;
 #X obj 645 182 spigot;
 #X obj 684 158 tgl 15 0 empty \$1-a8 empty 17 7 0 10 -262144 -1 -1
@@ -138,7 +138,7 @@
 #X msg 961 155 60;
 #X obj 961 180 spigot;
 #X obj 1000 156 tgl 15 0 empty \$1-a13 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X msg 1025 154 60;
 #X obj 1025 179 spigot;
 #X obj 1064 155 tgl 15 0 empty \$1-a14 empty 17 7 0 10 -262144 -1 -1
@@ -208,7 +208,7 @@
 0 1;
 #X obj 389 284 spigot;
 #X obj 428 260 tgl 15 0 empty \$1-b4 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 450 284 spigot;
 #X obj 489 260 tgl 15 0 empty \$1-b5 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -220,7 +220,7 @@
 0 1;
 #X obj 642 282 spigot;
 #X obj 681 258 tgl 15 0 empty \$1-b8 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 705 282 spigot;
 #X obj 744 258 tgl 15 0 empty \$1-b9 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -229,7 +229,7 @@
 0 1;
 #X obj 833 281 spigot;
 #X obj 872 257 tgl 15 0 empty \$1-b11 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 897 280 spigot;
 #X obj 936 256 tgl 15 0 empty \$1-b12 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -238,7 +238,7 @@
 0 1;
 #X obj 1022 279 spigot;
 #X obj 1061 255 tgl 15 0 empty \$1-b14 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1086 279 spigot;
 #X obj 1125 255 tgl 15 0 empty \$1-b15 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -264,7 +264,7 @@
 #X obj 1150 217 r \$0-n15;
 #X obj 197 391 spigot;
 #X obj 236 367 tgl 15 0 empty \$1-c1 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 261 390 spigot;
 #X obj 300 366 tgl 15 0 empty \$1-c2 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -276,10 +276,10 @@
 0 1;
 #X obj 450 389 spigot;
 #X obj 489 365 tgl 15 0 empty \$1-c5 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 514 388 spigot;
 #X obj 553 364 tgl 15 0 empty \$1-c6 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 578 388 spigot;
 #X obj 617 364 tgl 15 0 empty \$1-c7 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -288,7 +288,7 @@
 0 1;
 #X obj 705 387 spigot;
 #X obj 744 363 tgl 15 0 empty \$1-c9 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 769 386 spigot;
 #X obj 808 362 tgl 15 0 empty \$1-c10 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -306,7 +306,7 @@
 0 1;
 #X obj 1086 384 spigot;
 #X obj 1125 360 tgl 15 0 empty \$1-c15 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1150 383 spigot;
 #X obj 1189 359 tgl 15 0 empty \$1-c16 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -364,13 +364,13 @@
 0 1;
 #X obj 1435 173 spigot;
 #X obj 1474 149 tgl 15 0 empty \$1-d2 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1499 173 spigot;
 #X obj 1538 149 tgl 15 0 empty \$1-d3 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1563 172 spigot;
 #X obj 1602 148 tgl 15 0 empty \$1-d4 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1624 172 spigot;
 #X obj 1663 148 tgl 15 0 empty \$1-d5 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -391,13 +391,13 @@
 0 1;
 #X obj 2007 169 spigot;
 #X obj 2046 145 tgl 15 0 empty \$1-d11 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2071 168 spigot;
 #X obj 2110 144 tgl 15 0 empty \$1-d12 empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 2132 168 spigot;
 #X obj 2171 144 tgl 15 0 empty \$1-d13 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2196 167 spigot;
 #X obj 2235 143 tgl 15 0 empty \$1-d14 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -406,7 +406,7 @@
 0 1;
 #X obj 2324 166 spigot;
 #X obj 2363 142 tgl 15 0 empty \$1-d16 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2431 184 s \$0-outPitch;
 #X obj 1371 114 r \$0-n0;
 #X obj 1435 113 r \$0-n1;
@@ -444,7 +444,7 @@
 0 1;
 #X obj 1749 271 spigot;
 #X obj 1788 247 tgl 15 0 empty \$1-e7 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1813 270 spigot;
 #X obj 1852 246 tgl 15 0 empty \$1-e8 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -453,13 +453,13 @@
 0 1;
 #X obj 1940 269 spigot;
 #X obj 1979 245 tgl 15 0 empty \$1-e10 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2004 269 spigot;
 #X obj 2043 245 tgl 15 0 empty \$1-e11 empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 2068 268 spigot;
 #X obj 2107 244 tgl 15 0 empty \$1-e12 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2129 268 spigot;
 #X obj 2168 244 tgl 15 0 empty \$1-e13 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -468,7 +468,7 @@
 0 1;
 #X obj 2257 267 spigot;
 #X obj 2296 243 tgl 15 0 empty \$1-e15 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2321 266 spigot;
 #X obj 2360 242 tgl 15 0 empty \$1-e16 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -497,7 +497,7 @@
 0 1;
 #X obj 1496 378 spigot;
 #X obj 1535 354 tgl 15 0 empty \$1-f3 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1560 377 spigot;
 #X obj 1599 353 tgl 15 0 empty \$1-f4 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -515,7 +515,7 @@
 0 1;
 #X obj 1876 375 spigot;
 #X obj 1915 351 tgl 15 0 empty \$1-f9 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 1940 374 spigot;
 #X obj 1979 350 tgl 15 0 empty \$1-f10 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -530,7 +530,7 @@
 0 1;
 #X obj 2193 372 spigot;
 #X obj 2232 348 tgl 15 0 empty \$1-f14 empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2257 372 spigot;
 #X obj 2296 348 tgl 15 0 empty \$1-f15 empty 17 7 0 10 -262144 -1 -1
 0 1;
@@ -607,6 +607,7 @@
 #X obj -19 60 inlet;
 #X obj 142 480 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
+#X obj -11 91 * 2;
 #X connect 2 0 26 0;
 #X connect 3 0 103 0;
 #X connect 3 1 104 0;
@@ -637,7 +638,7 @@
 #X connect 19 0 6 6;
 #X connect 22 0 4 0;
 #X connect 22 0 23 0;
-#X connect 24 0 8 0;
+#X connect 24 0 448 0;
 #X connect 25 0 3 0;
 #X connect 25 0 0 0;
 #X connect 26 0 73 0;
@@ -1028,3 +1029,4 @@
 #X connect 445 0 1 0;
 #X connect 446 0 7 0;
 #X connect 447 0 445 1;
+#X connect 448 0 8 0;

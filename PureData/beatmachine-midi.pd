@@ -4,11 +4,11 @@
 #X obj 53 100 s \$0-page-2;
 #X obj 81 117 s \$0-page-3;
 #X obj 111 134 s \$0-page-4;
-#N canvas 0 24 1280 743 page-1 0;
+#N canvas 786 456 867 719 page-1 1;
 #X obj 21 215 vsl 30 128 0 240 0 0 empty empty empty 0 -9 0 10 -257985
 -1 -1 0 1;
 #X obj 59 215 vsl 30 128 0 127 0 0 empty empty empty 0 -9 0 10 -4032
--1 -1 9799 1;
+-1 -1 0 1;
 #X obj 21 353 tgl 30 0 empty empty empty 17 7 0 10 -257985 -1 -1 0
 1;
 #X obj 22 29 OSCroute /fader1 /fader2 /toggle1 /toggle2 /push1 /push2
@@ -19,7 +19,7 @@
 ;
 #X obj 103 272 tgl 50 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
 ;
-#X obj 103 212 tgl 50 0 empty empty empty 17 7 0 10 -4034 -1 -1 1 1
+#X obj 103 212 tgl 50 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
 ;
 #X obj 103 333 tgl 50 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
 ;
