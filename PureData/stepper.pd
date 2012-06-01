@@ -1,0 +1,15 @@
+#N canvas 339 542 420 277 10;
+#X obj 44 33 inlet bang;
+#X obj 45 102 + 1;
+#X obj 45 66 int 0;
+#X floatatom 45 157 5 0 0 0 - - -;
+#X obj 45 129 mod \$1;
+#X text 127 49 and start over from zero;
+#X text 128 32 This object will output numbers from 0 to \$1;
+#X obj 44 186 outlet step;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 1;
+#X connect 3 0 7 0;
+#X connect 4 0 3 0;

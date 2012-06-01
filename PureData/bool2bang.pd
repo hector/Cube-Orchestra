@@ -1,0 +1,10 @@
+#N canvas 968 392 450 300 10;
+#X obj -53 40 inlet boolean;
+#X obj -54 66 t b f;
+#X obj -54 98 spigot;
+#X obj -53 129 outlet bang;
+#X text -55 19 Outputs a bang if boolean is true;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 2 0 3 0;
