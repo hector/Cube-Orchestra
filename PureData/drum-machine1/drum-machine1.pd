@@ -1,8 +1,8 @@
-#N canvas 891 89 825 640 12;
+#N canvas 591 165 825 640 12;
 #X declare -lib cyclone;
 #X declare -lib cyclone;
 #X obj 247 189 hradio 30 1 0 16 empty empty empty 8 -8 0 8 -62784 -258699
--258699 0;
+-258699 6;
 #X obj 247 222 tgl 30 0 empty \$0-s1 empty 20 8 0 8 -44926 -258699
 -1 0 1;
 #X obj 277 222 tgl 30 0 empty \$0-s2 empty 20 8 0 8 -44926 -258699
@@ -721,7 +721,7 @@ creation arguments;
 1;
 #X obj 505 -30 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 525 -25 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 525 -25 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 543 -123 0;
 #X msg 554 -114 0;
@@ -1285,7 +1285,7 @@ creation arguments;
 #X connect 594 5 593 0;
 #X connect 601 0 594 0;
 #X restore 920 59 pd recPatt;
-#N canvas 0 30 1257 662 instruments 0;
+#N canvas -6 22 1257 662 instruments 0;
 #X obj -259 103 bng 25 250 50 0 empty empty play 30 10 0 8 -258699
 -241291 -1;
 #X obj -229 126 bng 25 250 50 0 empty empty load 30 10 0 8 -258699
@@ -1416,10 +1416,6 @@ creation arguments;
 #X obj 140 -23 spigot;
 #X obj -264 341 spigot;
 #X obj 502 348 spigot;
-#X obj -167 -22 receive13 \$1-pad1;
-#X obj -129 304 receive13 \$1-pad2;
-#X obj 242 -3 receive13 \$1-pad3;
-#X obj 756 -45 receive13 \$1-pad5;
 #X obj -258 -58 receive13 \$1-se1;
 #X obj -308 -86 receive13 \$1-pitch1;
 #X obj 217 -43 receive13 \$1-se3;
@@ -1438,20 +1434,24 @@ creation arguments;
 #X obj 301 213 f \$1;
 #X obj -138 486 f \$1;
 #X obj -233 160 f \$1;
-#X msg -196 182 \$1/1.wav;
-#X msg -132 508 \$1/2.wav;
 #X msg 639 512 \$1/4.wav;
-#X msg 358 231 \$1/3.wav;
-#X msg 806 121 \$1/5.wav;
-#X obj 369 174 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 369 174 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
+#X msg -196 182 \$1/9.wav;
+#X msg 358 231 \$1/5.wav;
+#X msg -132 508 \$1/6.wav;
+#X obj -129 304 receive13 \$1-pad6;
+#X obj -167 -22 receive13 \$1-pad9;
+#X msg 806 121 \$1/3.wav;
+#X obj 756 -45 receive13 \$1-pad3;
+#X obj 242 -4 receive13 \$1-pad5;
 #X connect 0 0 95 4;
 #X connect 1 0 95 5;
 #X connect 3 0 110 0;
 #X connect 5 0 17 0;
 #X connect 5 0 16 0;
 #X connect 5 0 81 0;
-#X connect 5 0 140 0;
+#X connect 5 0 136 0;
 #X connect 6 0 95 1;
 #X connect 8 0 95 0;
 #X connect 10 0 95 2;
@@ -1464,7 +1464,7 @@ creation arguments;
 #X connect 21 0 32 0;
 #X connect 21 0 31 0;
 #X connect 21 0 84 0;
-#X connect 21 0 139 0;
+#X connect 21 0 135 0;
 #X connect 22 0 94 1;
 #X connect 24 0 94 0;
 #X connect 26 0 94 2;
@@ -1477,7 +1477,7 @@ creation arguments;
 #X connect 37 0 48 0;
 #X connect 37 0 47 0;
 #X connect 37 0 82 0;
-#X connect 37 0 138 0;
+#X connect 37 0 134 0;
 #X connect 38 0 96 1;
 #X connect 40 0 96 0;
 #X connect 42 0 96 2;
@@ -1490,7 +1490,7 @@ creation arguments;
 #X connect 53 0 64 0;
 #X connect 53 0 63 0;
 #X connect 53 0 83 0;
-#X connect 53 0 136 0;
+#X connect 53 0 132 0;
 #X connect 54 0 97 1;
 #X connect 56 0 97 0;
 #X connect 58 0 97 2;
@@ -1502,7 +1502,7 @@ creation arguments;
 #X connect 68 0 79 0;
 #X connect 68 0 78 0;
 #X connect 68 0 85 0;
-#X connect 68 0 137 0;
+#X connect 68 0 133 0;
 #X connect 69 0 98 1;
 #X connect 71 0 98 0;
 #X connect 73 0 98 2;
@@ -1539,7 +1539,7 @@ creation arguments;
 #X connect 105 0 106 1;
 #X connect 106 0 18 0;
 #X connect 107 0 108 1;
-#X connect 107 0 146 0;
+#X connect 107 0 138 0;
 #X connect 108 0 34 0;
 #X connect 109 0 110 1;
 #X connect 110 0 0 0;
@@ -1549,38 +1549,38 @@ creation arguments;
 #X connect 116 0 43 0;
 #X connect 117 0 27 0;
 #X connect 118 0 59 0;
-#X connect 119 0 88 1;
-#X connect 119 0 93 0;
-#X connect 120 0 91 0;
-#X connect 120 0 91 1;
-#X connect 121 0 89 0;
-#X connect 121 0 89 1;
-#X connect 122 0 90 0;
-#X connect 122 0 90 1;
-#X connect 123 0 115 1;
-#X connect 124 0 115 0;
-#X connect 125 0 116 1;
-#X connect 126 0 116 0;
-#X connect 127 0 117 1;
-#X connect 128 0 117 0;
-#X connect 129 0 118 1;
-#X connect 130 0 118 0;
-#X connect 131 0 50 0;
-#X connect 132 0 131 0;
-#X connect 132 0 131 1;
-#X connect 133 0 74 0;
-#X connect 134 0 133 1;
-#X connect 135 0 133 0;
-#X connect 136 0 143 0;
-#X connect 137 0 145 0;
-#X connect 138 0 144 0;
-#X connect 139 0 142 0;
-#X connect 140 0 141 0;
-#X connect 141 0 95 6;
-#X connect 142 0 94 6;
-#X connect 143 0 97 6;
-#X connect 144 0 96 6;
-#X connect 145 0 98 6;
+#X connect 119 0 115 1;
+#X connect 120 0 115 0;
+#X connect 121 0 116 1;
+#X connect 122 0 116 0;
+#X connect 123 0 117 1;
+#X connect 124 0 117 0;
+#X connect 125 0 118 1;
+#X connect 126 0 118 0;
+#X connect 127 0 50 0;
+#X connect 128 0 127 0;
+#X connect 128 0 127 1;
+#X connect 129 0 74 0;
+#X connect 130 0 129 1;
+#X connect 131 0 129 0;
+#X connect 132 0 137 0;
+#X connect 133 0 144 0;
+#X connect 134 0 140 0;
+#X connect 135 0 141 0;
+#X connect 136 0 139 0;
+#X connect 137 0 97 6;
+#X connect 139 0 95 6;
+#X connect 140 0 96 6;
+#X connect 141 0 94 6;
+#X connect 142 0 91 0;
+#X connect 142 0 91 1;
+#X connect 143 0 88 1;
+#X connect 143 0 93 0;
+#X connect 144 0 98 6;
+#X connect 145 0 90 0;
+#X connect 145 0 90 1;
+#X connect 146 0 89 0;
+#X connect 146 0 89 1;
 #X restore 552 397 pd instruments;
 #N canvas 0 30 1257 662 instruments2 0;
 #X obj -19 153 bng 25 250 50 0 empty empty play 30 10 0 8 -258699 -241291
@@ -1663,35 +1663,13 @@ creation arguments;
 #X msg 525 459 1;
 #X msg 487 459 440;
 #X msg 562 459 100;
-#X obj 832 107 bng 25 250 50 0 empty empty play 30 10 0 8 -258699 -241291
--1;
-#X obj 862 130 bng 25 250 50 0 empty empty load 30 10 0 8 -258699 -241291
--1;
-#X obj 745 218 outlet~;
-#X obj 709 25 r \$0-sampleinit;
-#X floatatom 671 146 5 0 0 0 - - -;
-#X text 666 128 length;
-#X floatatom 672 169 5 0 0 0 - - -;
-#X text 665 187 volume;
-#X floatatom 719 146 5 0 0 0 - - -;
-#X floatatom 768 146 5 0 0 0 - - -;
-#X text 768 126 pitch;
-#X text 720 127 start;
-#X obj 852 218 s \$0-lastload;
-#X msg 709 98 1;
-#X msg 671 98 440;
-#X msg 746 98 100;
 #X obj 785 404 r \$0-channel9;
-#X obj 986 59 r \$0-channel10;
-#X obj 745 190 sampleplayer 10;
 #X obj 561 551 sampleplayer 9;
 #X obj -12 57 spigot;
 #X obj 65 363 spigot;
 #X obj 654 400 spigot;
 #X obj 845 436 r \$0-dO/O;
 #X obj 783 440 spigot;
-#X obj 1019 87 r \$0-dO/O;
-#X obj 904 89 spigot;
 #X obj 568 86 r \$0-dO/O;
 #X obj 506 90 spigot;
 #X obj 240 429 r \$0-dO/O;
@@ -1700,28 +1678,26 @@ creation arguments;
 #X obj 47 133 spigot;
 #X obj 417 64 spigot;
 #X obj -94 28 spigot;
-#X obj -11 33 receive13 \$1-pad6;
 #X obj -52 0 receive13 \$1-se6;
 #X obj -133 -26 receive13 \$1-pitch6;
 #X obj 83 327 receive13 \$1-pad7;
-#X obj 655 367 receive13 \$1-pad9;
-#X obj 417 7 receive13 \$1-pad8;
 #X obj 88 207 f \$1;
 #X obj 155 500 f \$1;
 #X obj 461 192 f \$1;
-#X obj 867 169 f \$1;
 #X obj 678 525 f \$1;
-#X msg 91 236 \$1/6.wav;
 #X msg 203 515 \$1/7.wav;
-#X msg 689 548 \$1/9.wav;
-#X msg 893 189 \$1/10.wav;
-#X msg 502 203 \$1/8.wav;
+#X msg 91 236 \$1/8.wav;
+#X obj -11 33 receive13 \$1-pad8;
+#X obj 417 7 receive13 \$1-pad1;
+#X msg 502 203 \$1/1.wav;
+#X obj 655 367 receive13 \$1-pad2;
+#X msg 689 548 \$1/2.wav;
 #X connect 0 0 50 4;
 #X connect 1 0 50 5;
 #X connect 4 0 16 0;
 #X connect 4 0 15 0;
 #X connect 4 0 47 0;
-#X connect 4 0 113 0;
+#X connect 4 0 90 0;
 #X connect 5 0 50 1;
 #X connect 7 0 50 0;
 #X connect 9 0 50 2;
@@ -1734,7 +1710,7 @@ creation arguments;
 #X connect 20 0 31 0;
 #X connect 20 0 30 0;
 #X connect 20 0 48 0;
-#X connect 20 0 114 0;
+#X connect 20 0 91 0;
 #X connect 21 0 51 1;
 #X connect 23 0 51 0;
 #X connect 25 0 51 2;
@@ -1746,7 +1722,7 @@ creation arguments;
 #X connect 35 0 46 0;
 #X connect 35 0 45 0;
 #X connect 35 0 55 0;
-#X connect 35 0 115 0;
+#X connect 35 0 92 0;
 #X connect 36 0 54 1;
 #X connect 38 0 54 0;
 #X connect 40 0 54 2;
@@ -1755,83 +1731,63 @@ creation arguments;
 #X connect 46 0 36 0;
 #X connect 47 0 10 0;
 #X connect 48 0 26 0;
-#X connect 49 0 104 0;
+#X connect 49 0 84 0;
 #X connect 50 0 3 0;
 #X connect 50 1 13 0;
 #X connect 51 0 19 0;
 #X connect 51 1 29 0;
-#X connect 52 0 102 0;
-#X connect 53 0 100 0;
+#X connect 52 0 82 0;
+#X connect 53 0 80 0;
 #X connect 54 0 34 0;
 #X connect 54 1 44 0;
 #X connect 55 0 41 0;
-#X connect 56 0 91 4;
-#X connect 57 0 91 5;
+#X connect 56 0 73 4;
+#X connect 57 0 73 5;
 #X connect 59 0 70 0;
 #X connect 59 0 69 0;
 #X connect 59 0 71 0;
-#X connect 59 0 117 0;
-#X connect 60 0 91 1;
-#X connect 62 0 91 0;
-#X connect 64 0 91 2;
-#X connect 65 0 91 3;
+#X connect 59 0 93 0;
+#X connect 60 0 73 1;
+#X connect 62 0 73 0;
+#X connect 64 0 73 2;
+#X connect 65 0 73 3;
 #X connect 69 0 64 0;
 #X connect 70 0 60 0;
 #X connect 71 0 65 0;
-#X connect 72 0 90 4;
-#X connect 73 0 90 5;
-#X connect 75 0 86 0;
-#X connect 75 0 85 0;
-#X connect 75 0 87 0;
-#X connect 75 0 116 0;
-#X connect 76 0 90 1;
-#X connect 78 0 90 0;
-#X connect 80 0 90 2;
-#X connect 81 0 90 3;
-#X connect 85 0 80 0;
-#X connect 86 0 76 0;
-#X connect 87 0 81 0;
-#X connect 88 0 96 0;
-#X connect 89 0 98 0;
-#X connect 90 0 74 0;
-#X connect 90 1 84 0;
-#X connect 91 0 58 0;
-#X connect 91 1 68 0;
-#X connect 92 0 0 0;
-#X connect 93 0 17 0;
-#X connect 94 0 56 0;
-#X connect 95 0 96 1;
-#X connect 96 0 56 0;
-#X connect 97 0 98 1;
-#X connect 98 0 72 0;
-#X connect 99 0 100 1;
-#X connect 100 0 32 0;
-#X connect 101 0 102 1;
-#X connect 102 0 17 0;
-#X connect 103 0 104 1;
-#X connect 104 0 0 0;
-#X connect 105 0 32 0;
-#X connect 106 0 10 0;
-#X connect 107 0 92 0;
-#X connect 107 0 92 1;
-#X connect 108 0 106 1;
-#X connect 109 0 106 0;
-#X connect 110 0 93 0;
-#X connect 110 0 93 1;
-#X connect 111 0 94 0;
-#X connect 111 0 94 1;
-#X connect 112 0 105 0;
-#X connect 112 0 105 1;
-#X connect 113 0 118 0;
-#X connect 114 0 119 0;
-#X connect 115 0 122 0;
-#X connect 116 0 121 0;
-#X connect 117 0 120 0;
-#X connect 118 0 50 6;
-#X connect 119 0 51 6;
-#X connect 120 0 91 6;
-#X connect 121 0 90 6;
-#X connect 122 0 54 6;
+#X connect 72 0 78 0;
+#X connect 73 0 58 0;
+#X connect 73 1 68 0;
+#X connect 74 0 0 0;
+#X connect 75 0 17 0;
+#X connect 76 0 56 0;
+#X connect 77 0 78 1;
+#X connect 78 0 56 0;
+#X connect 79 0 80 1;
+#X connect 80 0 32 0;
+#X connect 81 0 82 1;
+#X connect 82 0 17 0;
+#X connect 83 0 84 1;
+#X connect 84 0 0 0;
+#X connect 85 0 32 0;
+#X connect 86 0 10 0;
+#X connect 87 0 86 1;
+#X connect 88 0 86 0;
+#X connect 89 0 75 0;
+#X connect 89 0 75 1;
+#X connect 90 0 95 0;
+#X connect 91 0 94 0;
+#X connect 92 0 98 0;
+#X connect 93 0 100 0;
+#X connect 94 0 51 6;
+#X connect 95 0 50 6;
+#X connect 96 0 74 0;
+#X connect 96 0 74 1;
+#X connect 97 0 85 0;
+#X connect 97 0 85 1;
+#X connect 98 0 54 6;
+#X connect 99 0 76 0;
+#X connect 99 0 76 1;
+#X connect 100 0 73 6;
 #X restore 955 400 pd instruments2;
 #N canvas 451 343 1257 683 sequence 0;
 #X obj 16 -19 inlet;
@@ -2484,8 +2440,8 @@ creation arguments;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -2597,8 +2553,8 @@ creation arguments;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#A 4000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#A 4000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -2717,9 +2673,9 @@ creation arguments;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#A 8000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0
+#A 8000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -2842,8 +2798,8 @@ creation arguments;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -3078,14 +3034,14 @@ creation arguments;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #A 20000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -3198,9 +3154,9 @@ creation arguments;
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #A 24000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -14617,7 +14573,6 @@ creation arguments;
 #X connect 53 1 21 0;
 #X connect 53 2 21 0;
 #X connect 53 3 21 0;
-#X connect 53 4 21 0;
 #X connect 54 0 1 0;
 #X connect 54 1 2 0;
 #X connect 54 2 3 0;
