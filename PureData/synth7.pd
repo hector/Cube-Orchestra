@@ -147,7 +147,7 @@ easily be changed!;
 #X obj -97 388 r \$0-in1Vol;
 #X obj 90 429 fxRack \$1;
 #X obj 27 110 polywavesynth synth7 8 1;
-#X obj 30 -21 synth_sequencer;
+#X obj 30 -21 synth_sequencer \$1;
 #X connect 1 0 3 0;
 #X connect 1 1 4 0;
 #X connect 3 0 43 2;
