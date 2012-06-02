@@ -24,13 +24,17 @@ public abstract class Instrument extends Drawable {
 	public Instrument() throws Exception {
 		this(null);
 	}
-
+	
 	public Instrument(Integer size) throws Exception {
+		this(size, null);
+	}
+
+	public Instrument(Integer size, Integer color) throws Exception {
 		super();
 		layout = new Beatmachine();
 		mapLayout();
 		defaultLayout();
-		color = p5.color(230, 100, 30);
+		this.color = color == null ? p5.color(230, 100, 30) : color;
 		track = true;
 		accelerometer = false;
 		effects = new boolean[]{false, false, false, false, false};

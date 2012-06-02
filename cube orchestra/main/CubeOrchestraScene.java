@@ -76,6 +76,8 @@ public class CubeOrchestraScene extends AbstractScene {
 //		try {
 //			createSynthesizer("qweqwe");
 //			synthesizers.get(0).sequencer(true);
+//			createDrumMachine("asdsad");
+//			createDrumMachine("asdsad2");
 //		} catch (Exception e) {
 //		}
 
@@ -144,7 +146,9 @@ public class CubeOrchestraScene extends AbstractScene {
 	private void createDrumMachine(String ip) throws Exception {
 		if (drumMachines.size() >= 4)
 			return;
-		DrumMachine drums = new DrumMachine(instrumentSize);
+		DrumMachine drums = null;
+		if (drumMachines.size() == 1) drums = new Sampler(instrumentSize);
+		else drums = new DrumMachine(instrumentSize);
 		addInstrument(ip, drums);
 		drumMachines.add(drums);
 	}

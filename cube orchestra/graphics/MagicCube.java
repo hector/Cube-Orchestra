@@ -1,19 +1,12 @@
 package graphics;
 
 import instruments.Instrument;
-import main.CubeOrchestraScene;
 
 import org.mt4j.components.bounds.BoundingSphere;
-import org.mt4j.components.bounds.OrientedBoundingBox;
 import org.mt4j.input.gestureAction.DefaultDragAction;
 import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragProcessor;
 import org.mt4j.util.math.Vector3D;
 
-import OSC.Control;
-
-import effects.EffectDragAction;
-
-import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class MagicCube extends Cube {

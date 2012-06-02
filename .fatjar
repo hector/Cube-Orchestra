@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Sat Jun 02 13:42:43 CEST 2012
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=Cube-Orchestra.jar
+manifest.mergeall=true
+manifest.mainclass=main.StartCubeOrchestra
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
