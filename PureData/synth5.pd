@@ -1,4 +1,4 @@
-#N canvas 912 322 704 794 10;
+#N canvas 852 500 698 608 10;
 #X declare -lib cyclone;
 #X declare -lib cyclone;
 #X declare -lib mrpeach;

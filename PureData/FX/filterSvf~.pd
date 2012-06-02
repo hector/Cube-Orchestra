@@ -1,4 +1,4 @@
-#N canvas 161 271 924 425 10;
+#N canvas 58 202 854 378 10;
 #X declare -lib cyclone;
 #N canvas 324 234 556 460 svf_part2 0;
 #X text -1 306 onepole~.help contains yet another example.;
@@ -83,20 +83,13 @@ in radians input mode);
 #X obj 409 175 svf~ 797 0.5;
 #X obj 413 270 *~ 0.7;
 #X obj 464 54 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 3700 1;
 #X obj 223 245 inlet~;
 #X obj 498 12 import cyclone;
-#X obj 373 438 outlet~;
-#X obj 279 383 spigot~;
-#X obj 421 388 spigot~;
-#X obj 318 358 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 460 363 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 459 331 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 510 314 inlet;
+#X obj 290 343 outlet~;
 #X obj 662 32 inlet;
+#X obj 278 245 inlet bypass;
+#X obj 223 292 bypass~;
 #X connect 3 0 30 0;
 #X connect 9 0 33 0;
 #X connect 14 0 3 0;
@@ -118,15 +111,10 @@ in radians input mode);
 #X connect 31 1 28 0;
 #X connect 31 2 27 0;
 #X connect 31 3 26 0;
-#X connect 32 0 38 0;
+#X connect 32 0 36 0;
 #X connect 33 0 16 0;
-#X connect 34 0 31 0;
-#X connect 34 0 37 0;
-#X connect 37 0 36 0;
-#X connect 38 1 36 0;
-#X connect 39 0 37 1;
-#X connect 40 0 38 1;
-#X connect 41 0 40 0;
-#X connect 41 0 39 0;
-#X connect 42 0 41 0;
-#X connect 43 0 33 0;
+#X connect 34 0 39 0;
+#X connect 37 0 33 0;
+#X connect 38 0 39 1;
+#X connect 39 0 36 0;
+#X connect 39 1 31 0;

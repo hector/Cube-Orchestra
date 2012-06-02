@@ -1,0 +1,13 @@
+#N canvas 528 214 326 242 10;
+#X obj 0 -121 inlet~ signal;
+#X obj 156 -122 inlet bypass;
+#X obj -1 17 outlet~ dry;
+#X obj 147 17 outlet~ wet;
+#X obj 156 -78 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 0 -58 spigot~ 0;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 1 0 5 1;
+#X connect 5 0 2 0;
+#X connect 5 1 3 0;

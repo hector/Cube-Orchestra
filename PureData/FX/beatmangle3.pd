@@ -1,11 +1,11 @@
-#N canvas 0 22 640 752 10;
-#N canvas 0 24 1280 722 beatmangle 1;
+#N canvas 202 477 425 409 10;
+#N canvas 0 24 1280 722 beatmangle 0;
 #X obj 7 7 cnv 15 305 30 empty empty beatmangle 5 16 1 32 -261682 -66577
 0;
 #X obj 277 44 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 13 286 hsl 295 8 0 176400 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 29400 1;
+-1 -1 790 1;
 #X obj 443 549 outlet~;
 #X obj 496 548 outlet~;
 #X msg 327 253 range 0 \$1;
@@ -158,7 +158,7 @@ loop range.;
 #X floatatom 686 424 5 0 0 0 - - -;
 #X floatatom 587 303 5 0 7 0 - - -;
 #X obj 506 218 vsl 15 128 0 7 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3629 1;
 #X obj 526 296 int;
 #X msg 715 533 \; pd dsp 1;
 #X text 1362 159 1st argument: name of delay line;
