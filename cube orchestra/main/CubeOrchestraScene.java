@@ -13,8 +13,6 @@ import java.util.*;
 
 import org.mt4j.MTApplication;
 import org.mt4j.components.MTCanvas;
-import org.mt4j.input.inputProcessors.globalProcessors.CursorTracer;
-import org.mt4j.input.inputSources.TuioInputSource;
 import org.mt4j.sceneManagement.AbstractScene;
 
 public class CubeOrchestraScene extends AbstractScene {
@@ -147,7 +145,7 @@ public class CubeOrchestraScene extends AbstractScene {
 		if (drumMachines.size() >= 4)
 			return;
 		DrumMachine drums = null;
-		if (drumMachines.size() == 1) drums = new Sampler(instrumentSize);
+		if (drumMachines.size() == 1 || drumMachines.size() == 2) drums = new Sampler(instrumentSize);
 		else drums = new DrumMachine(instrumentSize);
 		addInstrument(ip, drums);
 		drumMachines.add(drums);

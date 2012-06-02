@@ -1,4 +1,4 @@
-#N canvas 381 631 754 333 10;
+#N canvas 243 214 754 333 10;
 #X declare -lib cyclone;
 #X declare -lib cyclone;
 #X declare -lib cyclone;
@@ -94,8 +94,8 @@
 #X msg 252 95 105;
 #X obj 218 71 t b b;
 #X obj -132 270 beatmachine-midi 2;
-#X obj 12 247 drum-machine1/drum-machine1 3;
 #X obj 34 224 drum-machine1/drum-machine1 4;
+#X obj 12 247 drum-machine1/sampler 3;
 #X connect 0 0 25 0;
 #X connect 1 0 2 0;
 #X connect 1 0 13 0;
