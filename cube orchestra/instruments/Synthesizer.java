@@ -6,7 +6,7 @@ import OSC.Control;
 public class Synthesizer extends Instrument {
 
   public Synthesizer(int size) throws Exception {
-    super(size, Colors.skyBlue);
+    super(size, Colors.black);
     Control octaveFader = layout.getControl("/1/fader1");
     octaveFader.setValues((float)0.5);
   }

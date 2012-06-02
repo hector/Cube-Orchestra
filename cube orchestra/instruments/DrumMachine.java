@@ -5,7 +5,7 @@ import graphics.Colors;
 public class DrumMachine extends Instrument {
   
   public DrumMachine(int size) throws Exception {
-    super(size, Colors.pastelYellow);
+    super(size, Colors.gray);
   }
 	
   public DrumMachine(int size, int color) throws Exception {

@@ -14,4 +14,7 @@ public final class Colors {
 	
 	public static final int pastelYellow = p5.color(254,249,157);
 	public static final int skyBlue = p5.color(141,211,247);
+	public static final int black = p5.color(30,30,30);
+	public static final int gray = p5.color(90,90,90);
+	public static final int brightGray = p5.color(240,240,240);
 }
