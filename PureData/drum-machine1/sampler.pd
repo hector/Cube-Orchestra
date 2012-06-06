@@ -1,6 +1,8 @@
 #N canvas 10 106 825 640 12;
+#X declare -lib cyclone;
+#X declare -lib cyclone;
 #X obj 247 189 hradio 30 1 0 16 empty empty empty 8 -8 0 8 -62784 -258699
--258699 0;
+-258699 12;
 #X obj 247 222 tgl 30 0 empty \$0-s1 empty 20 8 0 8 -44926 -258699
 -1 0 1;
 #X obj 277 222 tgl 30 0 empty \$0-s2 empty 20 8 0 8 -44926 -258699
@@ -37,7 +39,7 @@
 #X floatatom 695 150 0 0 0 0 - - -;
 #X text 243 62 CURRENT INSTRUMENT;
 #X floatatom 754 630 0 0 0 0 - - -;
-#N canvas 0 22 1440 843 output 0;
+#N canvas 0 22 639 470 output 1;
 #X obj 338 160 t b;
 #X obj 338 110 f;
 #X obj 338 60 inlet;
@@ -59,7 +61,6 @@
 #X obj 97 136 outlet;
 #X obj 146 274 line~;
 #X obj 23 259 *~;
-#X obj 31 392 dac~;
 #X text 21 205 audio;
 #X text 94 157 show level;
 #X obj 76 183 maxlib/scale 0 127 0 1;
@@ -68,11 +69,12 @@
 #X obj 338 210 s \$1-vol;
 #X obj 474 57 receive13 \$1-mute;
 #X obj 24 320 ../FX/fxRack \$1;
+#X obj 26 400 ../master_bus~;
 #X connect 0 0 4 0;
 #X connect 1 0 7 0;
 #X connect 2 0 6 0;
-#X connect 4 0 27 0;
-#X connect 5 0 27 0;
+#X connect 4 0 26 0;
+#X connect 5 0 26 0;
 #X connect 6 0 1 0;
 #X connect 7 0 0 0;
 #X connect 7 1 8 0;
@@ -80,21 +82,21 @@
 #X connect 9 1 4 1;
 #X connect 10 0 12 0;
 #X connect 10 0 13 0;
-#X connect 14 0 24 0;
-#X connect 15 0 25 0;
+#X connect 14 0 23 0;
+#X connect 15 0 24 0;
 #X connect 16 0 20 0;
 #X connect 17 0 18 0;
 #X connect 19 0 20 1;
-#X connect 20 0 29 0;
-#X connect 20 0 29 1;
-#X connect 24 0 17 0;
+#X connect 20 0 28 0;
+#X connect 20 0 28 1;
+#X connect 23 0 17 0;
+#X connect 23 0 19 0;
 #X connect 24 0 19 0;
-#X connect 25 0 19 0;
-#X connect 26 0 1 1;
-#X connect 26 0 9 0;
-#X connect 28 0 6 0;
-#X connect 29 0 21 0;
-#X connect 29 1 21 1;
+#X connect 25 0 1 1;
+#X connect 25 0 9 0;
+#X connect 27 0 6 0;
+#X connect 28 0 29 0;
+#X connect 28 1 29 1;
 #X restore 706 655 pd output;
 #X msg 812 655 MUTE;
 #X text 820 633 <-- output amplitude;
@@ -1590,7 +1592,7 @@ creation arguments;
 #X connect 150 0 67 0;
 #X connect 151 0 53 0;
 #X restore 552 397 pd instruments;
-#N canvas 0 30 1257 662 instruments2 1;
+#N canvas 0 30 1257 662 instruments2 0;
 #X obj -19 153 bng 25 250 50 0 empty empty play 30 10 0 8 -258699 -241291
 -1;
 #X obj 11 176 bng 25 250 50 0 empty empty load 30 10 0 8 -258699 -241291
