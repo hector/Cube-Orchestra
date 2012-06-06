@@ -39,7 +39,7 @@
 #X floatatom 695 150 0 0 0 0 - - -;
 #X text 243 62 CURRENT INSTRUMENT;
 #X floatatom 754 630 0 0 0 0 - - -;
-#N canvas 241 68 686 439 output 0;
+#N canvas 241 68 686 439 output 1;
 #X obj -225 -171 t b;
 #X obj -225 -221 f;
 #X obj -225 -271 inlet;
@@ -69,7 +69,6 @@
 #X obj -225 -121 s \$1-vol;
 #X obj -89 -274 receive13 \$1-mute;
 #X obj -539 -11 ../FX/fxRack \$1;
-#X obj -535 46 ../master_bus~;
 #X connect 0 0 4 0;
 #X connect 1 0 7 0;
 #X connect 2 0 6 0;
@@ -95,8 +94,6 @@
 #X connect 25 0 1 1;
 #X connect 25 0 9 0;
 #X connect 27 0 6 0;
-#X connect 28 0 29 0;
-#X connect 28 1 29 1;
 #X restore 706 655 pd output;
 #X msg 812 655 MUTE;
 #X text 820 633 <-- output amplitude;

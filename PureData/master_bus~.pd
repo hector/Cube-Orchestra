@@ -1,7 +1,0 @@
-#N canvas 904 319 258 115 10;
-#X obj 58 62 s~ outputL;
-#X obj 147 63 s~ outputR;
-#X obj 60 16 inlet~ L;
-#X obj 147 15 inlet~ R;
-#X connect 2 0 0 0;
-#X connect 3 0 1 0;
