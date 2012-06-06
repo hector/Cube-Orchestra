@@ -1,0 +1,14 @@
+#N canvas 782 242 216 213 10;
+#X obj 64 112 bypass~;
+#X obj 104 85 r13;
+#X msg 104 62 \$1;
+#X obj 104 38 loadbang;
+#X obj 21 39 inlet signal;
+#X obj 64 165 outlet~ dry;
+#X obj 103 142 outlet~ wet;
+#X connect 0 0 5 0;
+#X connect 0 1 6 0;
+#X connect 1 0 0 1;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 0 0;

@@ -1,0 +1,18 @@
+#N canvas 140 667 420 247 10;
+#X declare -lib cyclone;
+#X declare -lib cyclone;
+#X obj 167 165 filterSvf~;
+#X obj 249 33 inlet frequency;
+#X obj 57 37 inlet~ L;
+#X obj 166 35 inlet~ R;
+#X obj 58 196 outlet~ L;
+#X obj 167 197 outlet~ R;
+#X obj 58 166 filterSvf~;
+#X obj 249 65 maxlib/scale 0 1 5 127;
+#X connect 0 0 5 0;
+#X connect 1 0 7 0;
+#X connect 2 0 6 0;
+#X connect 3 0 0 0;
+#X connect 6 0 4 0;
+#X connect 7 0 6 1;
+#X connect 7 0 0 1;

@@ -1,8 +1,6 @@
 #N canvas 591 165 825 640 12;
-#X declare -lib cyclone;
-#X declare -lib cyclone;
 #X obj 247 189 hradio 30 1 0 16 empty empty empty 8 -8 0 8 -62784 -258699
--258699 6;
+-258699 0;
 #X obj 247 222 tgl 30 0 empty \$0-s1 empty 20 8 0 8 -44926 -258699
 -1 0 1;
 #X obj 277 222 tgl 30 0 empty \$0-s2 empty 20 8 0 8 -44926 -258699
@@ -39,7 +37,7 @@
 #X floatatom 695 150 0 0 0 0 - - -;
 #X text 243 62 CURRENT INSTRUMENT;
 #X floatatom 754 630 0 0 0 0 - - -;
-#N canvas 0 22 1440 843 output 0;
+#N canvas 0 22 1440 843 output 1;
 #X obj 338 160 t b;
 #X obj 338 110 f;
 #X obj 338 60 inlet;
@@ -69,7 +67,7 @@
 #X obj 397 92 r \$1-vol;
 #X obj 338 210 s \$1-vol;
 #X obj 474 57 receive13 \$1-mute;
-#X obj 24 320 ../fxRack \$1;
+#X obj 24 320 ../FX/fxRack \$1;
 #X connect 0 0 4 0;
 #X connect 1 0 7 0;
 #X connect 2 0 6 0;
@@ -1285,7 +1283,7 @@ creation arguments;
 #X connect 594 5 593 0;
 #X connect 601 0 594 0;
 #X restore 920 59 pd recPatt;
-#N canvas -6 22 1257 662 instruments 0;
+#N canvas 0 22 1257 662 instruments 0;
 #X obj -259 103 bng 25 250 50 0 empty empty play 30 10 0 8 -258699
 -241291 -1;
 #X obj -229 126 bng 25 250 50 0 empty empty load 30 10 0 8 -258699
