@@ -94,7 +94,7 @@
 #X msg 252 95 105;
 #X obj 218 71 t b b;
 #X obj -132 270 beatmachine-midi 2;
-#N canvas 976 258 427 403 master_output 1;
+#N canvas 976 258 427 403 master_output 0;
 #X obj 63 292 FX/st-limiter;
 #X obj 63 120 FX/st-compressor;
 #X obj 63 376 dac~;
@@ -103,7 +103,7 @@
 #X obj 281 73 loadbang;
 #X obj 281 129 s13 masterCompressor;
 #X obj 281 154 s13 masterLimiter;
-#N canvas 197 298 587 498 sum_buses 1;
+#N canvas 197 298 587 498 sum_buses 0;
 #X obj 34 41 r~ 1-busR;
 #X obj 98 41 r~ 2-busR;
 #X obj 160 41 r~ 3-busR;
